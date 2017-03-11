@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Zabieg" table="Zabieg" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="lista_zabiegow" cascade="lock" column="`Lista zabiegowID`" class="model.Lista_zabiegow" not-null="true" lazy="proxy">
+		</many-to-one>
+		<many-to-one name="pielegniarka" cascade="lock" column="PielegniarkaID" class="model.Pielegniarka" not-null="true" lazy="proxy">
+		</many-to-one>
+		<many-to-one name="skierowanie" column="SkierowanieID" class="model.Skierowanie" cascade="save-update,lock" unique="true" not-null="false" lazy="proxy">
+		</many-to-one>
+		<property name="data_wykonania" column="Data_wykonania" type="date" not-null="false" lazy="false"/>
+		<property name="uwagi" column="Uwagi" type="string" length="255" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Pielegniarka" table="Pielegniarka" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="adres" column="AdresID" class="model.Osoba" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		</many-to-one>
+		<many-to-one name="konto" column="KontoID" class="model.Konto" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		</many-to-one>
+		<many-to-one name="plan_pracy" column="Plan_pracyID" class="model.Plan_pracy" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		</many-to-one>
+		<set name="zabieg" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="PielegniarkaID" not-null="true"/>
+			<one-to-many class="model.Zabieg"/>
+		</set>
+		<set name="zamowienia" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="PielegniarkaID" not-null="true"/>
+			<one-to-many class="model.Zamowienia"/>
+		</set>
+	</class>
+</hibernate-mapping>

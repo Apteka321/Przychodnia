@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Recepta" table="Recepta" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="data_waznosci" column="Data_waznosci" type="integer" length="10" not-null="true" lazy="false"/>
+		<property name="dawkowanie" column="Dawkowanie" type="string" length="255" not-null="true" lazy="false"/>
+		<many-to-one name="wizyta" column="WizytaID" class="model.Wizyta" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		</many-to-one>
+		<set name="leki_Recepta" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="ReceptaID" not-null="true"/>
+			<one-to-many class="model.Leki_Recepta"/>
+		</set>
+	</class>
+</hibernate-mapping>

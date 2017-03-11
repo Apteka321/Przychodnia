@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Osoba" table="Osoba" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="imie" column="Imie" type="string" length="50" not-null="true" lazy="false"/>
+		<property name="nazwisko" column="Nazwisko" type="integer" length="11" not-null="true" lazy="false"/>
+		<property name="miejscowosc" column="Miejscowosc" type="string" length="50" not-null="true" lazy="false"/>
+		<property name="numer_domu" column="Numer_domu" type="integer" length="10" not-null="true" lazy="false"/>
+		<property name="ulica" column="Ulica" type="string" length="100" not-null="false" lazy="false"/>
+		<property name="kod_pocztowy" column="Kod_pocztowy" type="string" length="6" not-null="true" lazy="false"/>
+		<property name="poczta" column="Poczta" type="string" length="50" not-null="true" lazy="false"/>
+		<property name="numer_telefonu" column="Numer_telefonu" type="string" length="12" not-null="true" lazy="false"/>
+		<one-to-one name="lekarz" class="model.Lekarz" cascade="save-update,lock" property-ref="osoba" lazy="proxy"/>
+		<one-to-one name="pielegniarka" class="model.Pielegniarka" cascade="save-update,lock" property-ref="adres" lazy="proxy"/>
+		<one-to-one name="recepcjonistka" class="model.Recepcjonistka" cascade="save-update,lock" property-ref="osoba" lazy="proxy"/>
+		<one-to-one name="pacjent" class="model.Pacjent" cascade="save-update,lock" property-ref="osoba" lazy="proxy"/>
+	</class>
+</hibernate-mapping>

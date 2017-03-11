@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Platnosc" table="Platnosc" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="kwota" column="Kwota" type="big_decimal" precision="10" scale="2" not-null="true" lazy="false"/>
+		<property name="data_platnosci" column="Data_platnosci" type="date" not-null="false" lazy="false"/>
+		<property name="tytul_platnosci" column="Tytul_platnosci" type="string" length="255" not-null="true" lazy="false"/>
+		<many-to-one name="ID_wizyty" column="`ID wizyty`" class="model.Wizyta" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		</many-to-one>
+		<many-to-one name="recepcjonistka" cascade="lock" column="RecepcjonistkaId" class="model.Recepcjonistka" not-null="true" lazy="proxy">
+		</many-to-one>
+	</class>
+</hibernate-mapping>

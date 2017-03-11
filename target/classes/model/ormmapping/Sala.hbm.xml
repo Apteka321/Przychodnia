@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Sala" table="Sala" lazy="false">
+		<id name="numer_sali" column="Numer_sali" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="sala_dla" column="Sala_dla" type="string" length="100" not-null="false" lazy="false"/>
+		<set name="zamowienia" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="SalaNr_sali" not-null="true"/>
+			<one-to-many class="model.Zamowienia"/>
+		</set>
+		<one-to-one name="plan_dzienny" class="model.Plan_dzienny" cascade="save-update,lock" property-ref="salaNr_sali" lazy="proxy"/>
+	</class>
+</hibernate-mapping>
