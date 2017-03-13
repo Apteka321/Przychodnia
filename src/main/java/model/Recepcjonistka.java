@@ -1,6 +1,6 @@
 package model;
 
-public class Recepcjonistka {
+public class Recepcjonistka implements Pracownik{
 	public Recepcjonistka() {
 	}
 	

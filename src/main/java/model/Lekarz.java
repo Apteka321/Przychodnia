@@ -1,6 +1,6 @@
 package model;
 
-public class Lekarz {
+public class Lekarz implements Pracownik{
 	public Lekarz() {
 	}
 	

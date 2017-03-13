@@ -12,8 +12,8 @@
 			cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
 		</many-to-one>
 		<many-to-one name="plan_pracy" column="Plan_pracyID"
-			class="model.Plan_pracy" cascade="save-update,lock" unique="true" not-null="true"
-			lazy="proxy">
+			class="model.Plan_pracy" cascade="save-update,lock" unique="true"
+			not-null="false" lazy="proxy">
 		</many-to-one>
 		<many-to-one name="osoba" column="OsobaID" class="model.Osoba"
 			cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
