@@ -6,9 +6,13 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import org.hibernate.Session;
 
 import View.RejestracjaPracownikowMain;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.StageStyle;
 import model.HibernateUtil;
 import model.Konto;
 import model.Lekarz;
+import model.Pacjent;
 import model.Pielegniarka;
 import model.Recepcjonistka;
 import model.repository.KontaRepository;
@@ -23,9 +27,9 @@ public class KontaRepositoryImpl implements KontaRepository {
 
 			session.getTransaction().commit();
 			session.close();
-			RejestracjaPracownikowMain.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto administratora!");
+			wyswietlInformacje("Sukces", "Pomyœlnie dodano konto administratora!");
 		} catch (Exception e) {
-			RejestracjaPracownikowMain.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ administratora!");
+			wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ administratora!");
 		}
 
 	}
@@ -38,9 +42,9 @@ public class KontaRepositoryImpl implements KontaRepository {
 
 			session.getTransaction().commit();
 			session.close();
-			RejestracjaPracownikowMain.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto pielegniarki!");
+			wyswietlInformacje("Sukces", "Pomyœlnie dodano konto pielegniarki!");
 		} catch (Exception e) {
-			RejestracjaPracownikowMain.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ pielêgniarki!");
+			wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ pielêgniarki!");
 		}
 
 	}
@@ -53,9 +57,9 @@ public class KontaRepositoryImpl implements KontaRepository {
 
 			session.getTransaction().commit();
 			session.close();
-			RejestracjaPracownikowMain.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto recepcjonistki!");
+			wyswietlInformacje("Sukces", "Pomyœlnie dodano konto recepcjonistki!");
 		} catch (Exception e) {
-			RejestracjaPracownikowMain.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ recepcjonistki!");
+			wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ recepcjonistki!");
 		}
 
 	}
@@ -68,11 +72,46 @@ public class KontaRepositoryImpl implements KontaRepository {
 
 			session.getTransaction().commit();
 			session.close();
-			RejestracjaPracownikowMain.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto lekarza!");
+			wyswietlInformacje("Sukces", "Pomyœlnie dodano konto lekarza!");
 		} catch (Exception e) {
-			RejestracjaPracownikowMain.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ lekarza!");
+			wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ lekarza!");
 		}
 
+	}
+
+	public void dodajKontoPacjenta(Pacjent pacjent) {
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+			session.save(pacjent);
+
+			session.getTransaction().commit();
+			session.close();
+			wyswietlInformacje("Sukces", "Pomyœlnie dodano konto Pacjenta!");
+		} catch (Exception e) {
+			wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ Pacjenta!");
+		}
+
+	}
+
+	public static void wyswietlOstrzezenie(String naglowek, String tresc) {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Ostrze¿enie");
+		alert.setHeaderText(naglowek);
+		alert.setContentText(tresc);
+		alert.initStyle(StageStyle.UTILITY);
+
+		alert.showAndWait();
+	}
+
+	public static void wyswietlInformacje(String naglowek, String tresc) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Informacja");
+		alert.setHeaderText(naglowek);
+		alert.setContentText(tresc);
+		alert.initStyle(StageStyle.UTILITY);
+
+		alert.showAndWait();
 	}
 
 }

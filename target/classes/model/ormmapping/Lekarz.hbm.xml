@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--
-Licensee: The State School of Higher Vocational Education in Jaroslaw
-License Type: Academic
--->
+<!-- Licensee: The State School of Higher Vocational Education in Jaroslaw 
+	License Type: Academic -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="model.Lekarz" table="Lekarz" lazy="false">
@@ -10,23 +8,29 @@ License Type: Academic
 			<generator class="native">
 			</generator>
 		</id>
-		<many-to-one name="osoba" column="OsobaID" class="model.Osoba" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		<many-to-one name="osoba" column="OsobaID" class="model.Osoba"
+			cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
 		</many-to-one>
-		<many-to-one name="konto" column="KontoID" class="model.Konto" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		<many-to-one name="konto" column="KontoID" class="model.Konto"
+			cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
 		</many-to-one>
-		<many-to-one name="plan_pracy" column="Plan_pracyID" class="model.Plan_pracy" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		<many-to-one name="plan_pracy" column="Plan_pracyID"
+			class="model.Plan_pracy" cascade="save-update,lock" unique="true"
+			not-null="false" lazy="proxy">
 		</many-to-one>
-		<set name="ID_Specjalizacji" table="Specjalizacja_lekarza" lazy="true" cascade="save-update,lock">
-			<key column="`ID lekarza`" not-null="true"/>
+		<set name="ID_Specjalizacji" table="Specjalizacja_lekarza" lazy="true"
+			cascade="save-update,lock">
+			<key column="`ID lekarza`" not-null="true" />
 			<many-to-many column="`ID Specjalizacji`" class="model.Specjalizacja">
 			</many-to-many>
 		</set>
 		<set name="wizyta" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="`ID lekarza`" not-null="true"/>
-			<one-to-many class="model.Wizyta"/>
+			<key column="`ID lekarza`" not-null="true" />
+			<one-to-many class="model.Wizyta" />
 		</set>
-		<set name="specjalizacja" table="Lekarz_Specjalizacja" lazy="true" cascade="save-update,lock">
-			<key column="LekarzID" not-null="true"/>
+		<set name="specjalizacja" table="Lekarz_Specjalizacja" lazy="true"
+			cascade="save-update,lock">
+			<key column="LekarzID" not-null="true" />
 			<many-to-many column="SpecjalizacjaID" class="model.Specjalizacja">
 			</many-to-many>
 		</set>

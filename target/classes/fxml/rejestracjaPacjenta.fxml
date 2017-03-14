@@ -12,9 +12,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RejestracjaPacjentaController">
    <children>
-      <Pane fx:id="rejestracjaPracownikaPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: white;">
+      <Pane fx:id="rejestracjaPacjentaPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: white;">
          <children>
             <GridPane alignment="CENTER" prefHeight="500.0" prefWidth="400.0">
                <columnConstraints>
@@ -133,58 +133,7 @@
                         <Insets />
                      </GridPane.margin>
                   </JFXTextField>
-                  <JFXButton fx:id="zarejestrujPracownika" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" onAction="#rejestracjaPracownika" prefHeight="39.0" prefWidth="425.0" ripplerFill="BLACK" style="-fx-background-color: #2598f3;" text="Zarejestruj" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="11">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets top="10.0" />
-                     </GridPane.margin>
-                  </JFXButton>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </GridPane>
-         </children>
-      </Pane>
-      <Pane fx:id="rejestracjaAdministratoraPane" prefHeight="500.0" prefWidth="400.0" visible="false">
-         <children>
-            <GridPane alignment="CENTER" prefHeight="500.0" prefWidth="400.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <JFXTextField fx:id="login" focusColor="#2d9dd2" promptText="Login" unFocusColor="BLACK">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </JFXTextField>
-                  <JFXPasswordField fx:id="haslo1" focusColor="#2d9dd2" promptText="Hasło" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </JFXPasswordField>
-                  <JFXPasswordField fx:id="haslo2" focusColor="#2d9dd2" promptText="Powtórz hasło" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </JFXPasswordField>
-                  <JFXButton fx:id="zarejestrujAdministratora" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" onAction="#rejestracjaAdministratora" prefHeight="39.0" prefWidth="425.0" ripplerFill="BLACK" style="-fx-background-color: #2598f3;" text="Zarejestruj" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="5">
+                  <JFXButton fx:id="zarejestrujButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" onAction="#zarejestrujPacjenta" prefHeight="39.0" prefWidth="425.0" ripplerFill="BLACK" style="-fx-background-color: #2598f3;" text="Zarejestruj" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true" GridPane.rowIndex="11">
                      <font>
                         <Font size="18.0" />
                      </font>

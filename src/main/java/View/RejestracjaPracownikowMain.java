@@ -10,12 +10,11 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class RejestracjaPracownikowMain extends Application {
-
-	public static void main(String[] args) {
-
-		launch(args);
-	}
-
+	/*
+	 * public static void main(String[] args) {
+	 * 
+	 * launch(args); }
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
@@ -26,26 +25,6 @@ public class RejestracjaPracownikowMain extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Rejestracja pracownika");
 		primaryStage.show();
-	}
-
-	public static void wyswietlOstrzezenie(String naglowek, String tresc) {
-		Alert alert = new Alert(AlertType.WARNING);
-		alert.setTitle("Ostrze¿enie");
-		alert.setHeaderText(naglowek);
-		alert.setContentText(tresc);
-		alert.initStyle(StageStyle.UTILITY);
-
-		alert.showAndWait();
-	}
-
-	public static void wyswietlInformacje(String naglowek, String tresc) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Informacja");
-		alert.setHeaderText(naglowek);
-		alert.setContentText(tresc);
-		alert.initStyle(StageStyle.UTILITY);
-
-		alert.showAndWait();
 	}
 
 }

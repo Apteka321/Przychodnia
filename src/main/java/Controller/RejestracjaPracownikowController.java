@@ -117,15 +117,16 @@ public class RejestracjaPracownikowController {
 
 	@FXML
 	void rejestracjaAdministratora() {
+		KontaRepositoryImpl kontaRepository = new KontaRepositoryImpl();
 		if (haslo1.getText().equals(haslo2.getText())) {
 			Konto kontoAdministratora = new Konto();
 			kontoAdministratora.setLogin(login.getText());
 			kontoAdministratora.setHaslo(haslo1.getText());
 			kontoAdministratora.setTyp_konta(rejestrowaneKonto);
-			KontaRepositoryImpl kontaRepository = new KontaRepositoryImpl();
+
 			kontaRepository.dodajKontoAdministratora(kontoAdministratora);
 		} else {
-			RejestracjaPracownikowMain.wyswietlOstrzezenie("Has³a", "Has³a musz¹ byæ takie same!");
+			KontaRepositoryImpl.wyswietlOstrzezenie("Has³a", "Has³a musz¹ byæ takie same!");
 		}
 	}
 
