@@ -1,5 +1,4 @@
 package model;
-
 public class Plan_pracy {
 	public Plan_pracy() {
 	}

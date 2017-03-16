@@ -1,6 +1,5 @@
 package model;
-
-public class Lekarz implements Pracownik{
+public class Lekarz implements Pracownik {
 	public Lekarz() {
 	}
 	
@@ -18,62 +17,6 @@ public class Lekarz implements Pracownik{
 	
 	private java.util.Set specjalizacja = new java.util.HashSet();
 	
-	public String getImie() {
-		return imie;
-	}
-
-	public void setImie(String imie) {
-		this.imie = imie;
-	}
-
-	public String getNazwisko() {
-		return nazwisko;
-	}
-
-	public void setNazwisko(String nazwisko) {
-		this.nazwisko = nazwisko;
-	}
-
-	public String getNumer_telefonu() {
-		return numer_telefonu;
-	}
-
-	public void setNumer_telefonu(String numer_telefonu) {
-		this.numer_telefonu = numer_telefonu;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getHaslo() {
-		return haslo;
-	}
-
-	public void setHaslo(String haslo) {
-		this.haslo = haslo;
-	}
-
-	public Integer getCena_za_godzienie() {
-		return cena_za_godzienie;
-	}
-
-	public void setCena_za_godzienie(Integer cena_za_godzienie) {
-		this.cena_za_godzienie = cena_za_godzienie;
-	}
-
-	public String getKontoLogin() {
-		return kontoLogin;
-	}
-
-	public void setKontoLogin(String kontoLogin) {
-		this.kontoLogin = kontoLogin;
-	}
-
 	public void setID(int value) {
 		this.ID = value;
 	}

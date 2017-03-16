@@ -1,5 +1,4 @@
 package model;
-
 public class Wolne_od_pracy {
 	public Wolne_od_pracy() {
 	}

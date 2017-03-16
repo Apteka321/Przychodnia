@@ -1,12 +1,11 @@
 package model;
-
 public class Recepta {
 	public Recepta() {
 	}
 	
 	private int ID;
 	
-	private int data_waznosci;
+	private java.util.Date data_waznosci;
 	
 	private String dawkowanie;
 	
@@ -14,11 +13,11 @@ public class Recepta {
 	
 	private java.util.Set leki_Recepta = new java.util.HashSet();
 	
-	public void setData_waznosci(int value) {
+	public void setData_waznosci(java.util.Date value) {
 		this.data_waznosci = value;
 	}
 	
-	public int getData_waznosci() {
+	public java.util.Date getData_waznosci() {
 		return data_waznosci;
 	}
 	

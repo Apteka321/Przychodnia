@@ -1,5 +1,4 @@
 package model;
-
 public class Plan_dzienny {
 	public Plan_dzienny() {
 	}

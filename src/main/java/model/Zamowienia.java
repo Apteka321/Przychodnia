@@ -1,5 +1,4 @@
 package model;
-
 public class Zamowienia {
 	public Zamowienia() {
 	}

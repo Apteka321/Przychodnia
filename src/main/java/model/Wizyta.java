@@ -1,5 +1,4 @@
 package model;
-
 public class Wizyta {
 	public Wizyta() {
 	}
@@ -34,22 +33,6 @@ public class Wizyta {
 	
 	private java.util.Set zwolnienie = new java.util.HashSet();
 	
-	public String getKto_zarejestrowal() {
-		return kto_zarejestrowal;
-	}
-
-	public void setKto_zarejestrowal(String kto_zarejestrowal) {
-		this.kto_zarejestrowal = kto_zarejestrowal;
-	}
-
-	public java.math.BigDecimal getCena() {
-		return cena;
-	}
-
-	public void setCena(java.math.BigDecimal cena) {
-		this.cena = cena;
-	}
-
 	public void setID(int value) {
 		this.ID = value;
 	}
