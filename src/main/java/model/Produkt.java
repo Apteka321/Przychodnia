@@ -1,4 +1,5 @@
 package model;
+
 public class Produkt {
 	public Produkt() {
 	}
@@ -9,9 +10,7 @@ public class Produkt {
 	
 	private java.math.BigDecimal cena;
 	
-	private int ilosc;
-	
-	private java.util.Set zamowienia = new java.util.HashSet();
+	private java.util.Set produkt_Zamowienia = new java.util.HashSet();
 	
 	public void setID(int value) {
 		this.ID = value;
@@ -41,20 +40,12 @@ public class Produkt {
 		return cena;
 	}
 	
-	public void setIlosc(int value) {
-		this.ilosc = value;
+	public void setProdukt_Zamowienia(java.util.Set value) {
+		this.produkt_Zamowienia = value;
 	}
 	
-	public int getIlosc() {
-		return ilosc;
-	}
-	
-	public void setZamowienia(java.util.Set value) {
-		this.zamowienia = value;
-	}
-	
-	public java.util.Set getZamowienia() {
-		return zamowienia;
+	public java.util.Set getProdukt_Zamowienia() {
+		return produkt_Zamowienia;
 	}
 	
 	

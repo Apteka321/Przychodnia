@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Produkt_Zamowienia" table="Produkt_Zamowienia" lazy="false">
+		<composite-id>
+			<key-many-to-one name="produkt" column="ProduktID" class="model.Produkt">
+			</key-many-to-one>
+			<key-many-to-one name="zamowienia" column="ZamowieniaID" class="model.Zamowienia">
+			</key-many-to-one>
+		</composite-id>
+		<property name="ilosc" column="Ilosc" type="integer" length="10" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>
