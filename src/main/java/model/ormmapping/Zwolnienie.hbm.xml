@@ -13,6 +13,6 @@ License Type: Academic
 		<many-to-one name="wizyta" cascade="lock" column="WizytaID" class="model.Wizyta" not-null="true" lazy="proxy">
 		</many-to-one>
 		<property name="zwolnienie_do" column="Zwolnienie_do" type="date" not-null="true" lazy="false"/>
-		<property name="powod_zwolnienia" column="Powod_zwolnienia" type="integer" length="10" not-null="true" lazy="false"/>
+		<property name="powod_zwolnienia" column="Powod_zwolnienia" type="string" length="255" not-null="true" lazy="false"/>
 	</class>
 </hibernate-mapping>

@@ -1,5 +1,4 @@
 package model;
-
 public class Leki_Recepta {
 	public Leki_Recepta() {
 	}

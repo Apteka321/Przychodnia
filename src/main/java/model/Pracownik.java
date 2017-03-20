@@ -9,4 +9,8 @@ public interface Pracownik {
 
 	public Osoba getOsoba();
 
+	public void setPlan_pracy(Plan_pracy value);
+
+	public Plan_pracy getPlan_pracy();
+
 }

@@ -6,8 +6,6 @@ public class Plan_pracy {
 	
 	private int ID;
 	
-	private Plan_dzienny plan_dzienny;
-	
 	private java.util.Date umowa_od;
 	
 	private java.math.BigDecimal wyplata;
@@ -19,6 +17,8 @@ public class Plan_pracy {
 	private Pielegniarka pielegniarka;
 	
 	private Recepcjonistka recepcjonistka;
+	
+	private java.util.Set plan_dzienny = new java.util.HashSet();
 	
 	public void setID(int value) {
 		this.ID = value;
@@ -46,14 +46,6 @@ public class Plan_pracy {
 	
 	public java.math.BigDecimal getWyplata() {
 		return wyplata;
-	}
-	
-	public void setPlan_dzienny(Plan_dzienny value) {
-		this.plan_dzienny = value;
-	}
-	
-	public Plan_dzienny getPlan_dzienny() {
-		return plan_dzienny;
 	}
 	
 	public void setWolne_od_pracy(java.util.Set value) {
@@ -88,6 +80,15 @@ public class Plan_pracy {
 	public Recepcjonistka getRecepcjonistka() {
 		return recepcjonistka;
 	}
+	
+	public void setPlan_dzienny(java.util.Set value) {
+		this.plan_dzienny = value;
+	}
+	
+	public java.util.Set getPlan_dzienny() {
+		return plan_dzienny;
+	}
+	
 	
 	public String toString() {
 		return String.valueOf(getID());

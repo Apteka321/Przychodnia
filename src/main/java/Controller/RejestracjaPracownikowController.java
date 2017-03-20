@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import View.Komunikaty;
 import View.RejestracjaPracownikowMain;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -126,7 +127,7 @@ public class RejestracjaPracownikowController {
 
 			kontaRepository.dodajKontoAdministratora(kontoAdministratora);
 		} else {
-			KontaRepositoryImpl.wyswietlOstrzezenie("Has³a", "Has³a musz¹ byæ takie same!");
+			Komunikaty.wyswietlOstrzezenie("Has³a", "Has³a musz¹ byæ takie same!");
 		}
 	}
 

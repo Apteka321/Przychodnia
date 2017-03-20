@@ -1,6 +1,5 @@
 package model;
-
-public class Recepcjonistka implements Pracownik{
+public class Recepcjonistka  implements Pracownik{
 	public Recepcjonistka() {
 	}
 	
@@ -8,10 +7,10 @@ public class Recepcjonistka implements Pracownik{
 	
 	private Konto konto;
 	
+	private Osoba osoba;
+	
 	private Plan_pracy plan_pracy;
 	
-	private Osoba osoba;
-		
 	private java.util.Set wizyta = new java.util.HashSet();
 	
 	private java.util.Set platnosc = new java.util.HashSet();

@@ -1,5 +1,4 @@
 package model;
-
 public class Zabieg {
 	public Zabieg() {
 	}

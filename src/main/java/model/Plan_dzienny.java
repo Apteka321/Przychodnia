@@ -16,9 +16,11 @@ public class Plan_dzienny {
 	
 	private java.sql.Time przerwa_do;
 	
-	private Sala salaNr_sali;
+	private int salaNr_sali;
 	
-	private java.util.Set plan_pracy = new java.util.HashSet();
+	private Plan_pracy plan_pracy;
+	
+	private Sala salaNumer_sali;
 	
 	public void setID(int value) {
 		this.ID = value;
@@ -72,22 +74,29 @@ public class Plan_dzienny {
 		return przerwa_do;
 	}
 	
-	public void setSalaNr_sali(Sala value) {
+	public void setSalaNr_sali(int value) {
 		this.salaNr_sali = value;
 	}
 	
-	public Sala getSalaNr_sali() {
+	public int getSalaNr_sali() {
 		return salaNr_sali;
 	}
 	
-	public void setPlan_pracy(java.util.Set value) {
+	public void setPlan_pracy(Plan_pracy value) {
 		this.plan_pracy = value;
 	}
 	
-	public java.util.Set getPlan_pracy() {
+	public Plan_pracy getPlan_pracy() {
 		return plan_pracy;
 	}
 	
+	public void setSalaNumer_sali(Sala value) {
+		this.salaNumer_sali = value;
+	}
+	
+	public Sala getSalaNumer_sali() {
+		return salaNumer_sali;
+	}
 	
 	public String toString() {
 		return String.valueOf(getID());

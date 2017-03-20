@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
+import model.Konto;
 import model.Osoba;
 import model.Pacjent;
 import model.repository.KontaRepository;
@@ -23,8 +24,10 @@ public class RejestracjaPacjentaController {
 	private Pacjent pobierzDaneZFormularzaDoPacjenta() {
 		Pacjent pacjent = new Pacjent();
 		pacjent.setPESEL(pesel.getText());
-		pacjent.setLogin(login.getText());
-		pacjent.setHaslo(haslo.getText());
+
+		Konto konto = new Konto();
+		konto.setHaslo(haslo.getText());
+		konto.setLogin(login.getText());
 
 		Osoba osoba = new Osoba();
 		osoba.setImie(imie.getText());

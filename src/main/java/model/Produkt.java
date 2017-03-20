@@ -1,69 +1,56 @@
 package model;
 
-import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
-
 public class Produkt {
 	public Produkt() {
 	}
-
+	
 	private int ID;
-
-	private int nazwa;
-
-	private BigDecimal cena;
-
-	private int ilosc;
-
-	private Set zamowienia = new HashSet();
-
+	
+	private String nazwa;
+	
+	private java.math.BigDecimal cena;
+	
+	private java.util.Set produkt_Zamowienia = new java.util.HashSet();
+	
 	public void setID(int value) {
 		this.ID = value;
 	}
-
+	
 	public int getID() {
 		return ID;
 	}
-
+	
 	public int getORMID() {
 		return getID();
 	}
-
-	public void setNazwa(int value) {
+	
+	public void setNazwa(String value) {
 		this.nazwa = value;
 	}
-
-	public int getNazwa() {
+	
+	public String getNazwa() {
 		return nazwa;
 	}
-
-	public void setCena(BigDecimal value) {
+	
+	public void setCena(java.math.BigDecimal value) {
 		this.cena = value;
 	}
-
-	public BigDecimal getCena() {
+	
+	public java.math.BigDecimal getCena() {
 		return cena;
 	}
-
-	public void setIlosc(int value) {
-		this.ilosc = value;
+	
+	public void setProdukt_Zamowienia(java.util.Set value) {
+		this.produkt_Zamowienia = value;
 	}
-
-	public int getIlosc() {
-		return ilosc;
+	
+	public java.util.Set getProdukt_Zamowienia() {
+		return produkt_Zamowienia;
 	}
-
-	public void setZamowienia(Set value) {
-		this.zamowienia = value;
-	}
-
-	public Set getZamowienia() {
-		return zamowienia;
-	}
-
+	
+	
 	public String toString() {
 		return String.valueOf(getID());
 	}
-
+	
 }

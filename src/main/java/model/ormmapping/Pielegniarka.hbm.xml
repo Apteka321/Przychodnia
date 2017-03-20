@@ -16,7 +16,7 @@
 		</many-to-one>
 		<many-to-one name="plan_pracy" column="Plan_pracyID"
 			class="model.Plan_pracy" cascade="save-update,lock" unique="true"
-			not-null="false" lazy="proxy">
+			not-null="true" lazy="proxy">
 		</many-to-one>
 		<set name="zabieg" lazy="true" cascade="save-update,lock" inverse="true">
 			<key column="PielegniarkaID" not-null="true" />

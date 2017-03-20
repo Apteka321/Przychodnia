@@ -1,5 +1,4 @@
 package model;
-
 public class Skierowanie {
 	public Skierowanie() {
 	}

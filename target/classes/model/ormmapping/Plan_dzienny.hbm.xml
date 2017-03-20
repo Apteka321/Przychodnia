@@ -15,11 +15,10 @@ License Type: Academic
 		<property name="koniec" column="Koniec" type="time" not-null="true" lazy="false"/>
 		<property name="przerwa_od" column="Przerwa_od" type="time" not-null="true" lazy="false"/>
 		<property name="przerwa_do" column="Przerwa_do" type="time" not-null="true" lazy="false"/>
-		<many-to-one name="salaNr_sali" column="SalaNr_sali" class="model.Sala" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		<property name="salaNr_sali" column="SalaNr_sali" type="integer" length="10" not-null="true" lazy="false"/>
+		<many-to-one name="plan_pracy" cascade="lock" column="Plan_pracyID" class="model.Plan_pracy" not-null="true" lazy="proxy">
 		</many-to-one>
-		<set name="plan_pracy" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="Plan_dziennyID" not-null="true"/>
-			<one-to-many class="model.Plan_pracy"/>
-		</set>
+		<many-to-one name="salaNumer_sali" cascade="lock" column="SalaNumer_sali" class="model.Sala" not-null="true" lazy="proxy">
+		</many-to-one>
 	</class>
 </hibernate-mapping>

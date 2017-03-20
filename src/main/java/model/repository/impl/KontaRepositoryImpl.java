@@ -2,10 +2,16 @@ package model.repository.impl;
 
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
+import View.Komunikaty;
 import View.RejestracjaPracownikowMain;
+import javafx.print.Collation;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
@@ -27,9 +33,9 @@ public class KontaRepositoryImpl implements KontaRepository {
 
 			session.getTransaction().commit();
 			session.close();
-			wyswietlInformacje("Sukces", "Pomyœlnie dodano konto administratora!");
+			Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto administratora!");
 		} catch (Exception e) {
-			wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ administratora!");
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ administratora!");
 		}
 
 	}
@@ -42,9 +48,9 @@ public class KontaRepositoryImpl implements KontaRepository {
 
 			session.getTransaction().commit();
 			session.close();
-			wyswietlInformacje("Sukces", "Pomyœlnie dodano konto pielegniarki!");
+			Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto pielegniarki!");
 		} catch (Exception e) {
-			wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ pielêgniarki!");
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ pielêgniarki!");
 		}
 
 	}
@@ -57,9 +63,9 @@ public class KontaRepositoryImpl implements KontaRepository {
 
 			session.getTransaction().commit();
 			session.close();
-			wyswietlInformacje("Sukces", "Pomyœlnie dodano konto recepcjonistki!");
+			Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto recepcjonistki!");
 		} catch (Exception e) {
-			wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ recepcjonistki!");
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ recepcjonistki!");
 		}
 
 	}
@@ -72,9 +78,9 @@ public class KontaRepositoryImpl implements KontaRepository {
 
 			session.getTransaction().commit();
 			session.close();
-			wyswietlInformacje("Sukces", "Pomyœlnie dodano konto lekarza!");
+			Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto lekarza!");
 		} catch (Exception e) {
-			wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ lekarza!");
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ lekarza!");
 		}
 
 	}
@@ -87,31 +93,86 @@ public class KontaRepositoryImpl implements KontaRepository {
 
 			session.getTransaction().commit();
 			session.close();
-			wyswietlInformacje("Sukces", "Pomyœlnie dodano konto Pacjenta!");
+			Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto Pacjenta!");
 		} catch (Exception e) {
-			wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ Pacjenta!");
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ Pacjenta!");
 		}
 
 	}
 
-	public static void wyswietlOstrzezenie(String naglowek, String tresc) {
-		Alert alert = new Alert(AlertType.WARNING);
-		alert.setTitle("Ostrze¿enie");
-		alert.setHeaderText(naglowek);
-		alert.setContentText(tresc);
-		alert.initStyle(StageStyle.UTILITY);
+	public List<Pielegniarka> getListaPielegniarek() {
+		List<Pielegniarka> listaPielegniarek = new ArrayList<Pielegniarka>();
+		String hql = "FROM Pielegniarka";
 
-		alert.showAndWait();
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			listaPielegniarek.addAll(query.list());
+			session.close();
+
+		} catch (Exception e) {
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy pielegniarek!");
+		}
+		// sortowanie listy
+		if (listaPielegniarek.size() > 0) {
+			listaPielegniarek.sort(new Comparator<Pielegniarka>() {
+				public int compare(Pielegniarka o1, Pielegniarka o2) {
+					return o1.getOsoba().getNazwisko().compareTo(o2.getOsoba().getNazwisko());
+				}
+			});
+		}
+		return listaPielegniarek;
 	}
 
-	public static void wyswietlInformacje(String naglowek, String tresc) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Informacja");
-		alert.setHeaderText(naglowek);
-		alert.setContentText(tresc);
-		alert.initStyle(StageStyle.UTILITY);
+	public List<Lekarz> getListaLekarzy() {
+		List<Lekarz> listaLekarzy = new ArrayList<Lekarz>();
+		String hql = "FROM Lekarz";
 
-		alert.showAndWait();
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			listaLekarzy.addAll(query.list());
+			session.close();
+
+		} catch (Exception e) {
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy Lekarzy!");
+		}
+
+		// sortowanie listy
+		if (listaLekarzy.size() > 0) {
+			listaLekarzy.sort(new Comparator<Lekarz>() {
+				public int compare(Lekarz o1, Lekarz o2) {
+					return o1.getOsoba().getNazwisko().compareTo(o2.getOsoba().getNazwisko());
+				}
+			});
+		}
+		return listaLekarzy;
 	}
+
+	public List<Recepcjonistka> getListaRecepcjonistek() {
+		List<Recepcjonistka> listaRecepcjonistek = new ArrayList<Recepcjonistka>();
+		String hql = "FROM Recepcjonistka";
+
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			listaRecepcjonistek.addAll(query.list());
+			session.close();
+
+		} catch (Exception e) {
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy recepcjonistek!");
+		}
+
+		// sortowanie listy
+		if (listaRecepcjonistek.size() > 0) {
+			listaRecepcjonistek.sort(new Comparator<Recepcjonistka>() {
+				public int compare(Recepcjonistka o1, Recepcjonistka o2) {
+					return o1.getOsoba().getNazwisko().compareTo(o2.getOsoba().getNazwisko());
+				}
+			});
+		}
+		return listaRecepcjonistek;
+	}
+
 
 }

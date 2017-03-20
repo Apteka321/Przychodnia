@@ -1,5 +1,4 @@
 package model;
-
 public class Lista_zabiegow {
 	public Lista_zabiegow() {
 	}

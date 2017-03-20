@@ -10,7 +10,7 @@ License Type: Academic
 			<generator class="native">
 			</generator>
 		</id>
-		<property name="data_waznosci" column="Data_waznosci" type="integer" length="10" not-null="true" lazy="false"/>
+		<property name="data_waznosci" column="Data_waznosci" type="date" not-null="true" lazy="false"/>
 		<property name="dawkowanie" column="Dawkowanie" type="string" length="255" not-null="true" lazy="false"/>
 		<many-to-one name="wizyta" column="WizytaID" class="model.Wizyta" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
 		</many-to-one>
