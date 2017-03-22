@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -119,6 +121,15 @@ public class TworzniePlanuPracyController {
 				if (imiePracownika.equals(pracownik.getOsoba().getImie())
 						&& nazwiskoPracownika.equals(pracownik.getOsoba().getNazwisko())) {
 					wybranyPracownik = pracownik;
+					if (wybranyPracownik.getPlan_pracy() != null) {
+						boolean wczytacPlanZBazyDanych = Komunikaty.wyswietlPotwierdzenie("Uwaga!",
+								"Wybrany pracownik posiada ju¿ plan pracy.", "Chcesz wczytaæ istniej¹cy plan pracy?");
+						if (wczytacPlanZBazyDanych) {
+							wczytajPlanPracyDoFormularza(wybranyPracownik);
+						} else {
+							wyczyscFormularz();
+						}
+					}
 				}
 			}
 
@@ -132,6 +143,135 @@ public class TworzniePlanuPracyController {
 			}
 		}
 
+	}
+
+	private void wyczyscFormularz() {
+		wynagrodzenie.setText("");
+		dataUmowy.setValue(null);
+
+		poczatekPracy1.setValue(null);
+		koniecPracy1.setValue(null);
+		przerwaOd1.setValue(null);
+		przerwaDo1.setValue(null);
+		sala1.getSelectionModel().select(null);
+
+		poczatekPracy2.setValue(null);
+		koniecPracy2.setValue(null);
+		przerwaOd2.setValue(null);
+		przerwaDo2.setValue(null);
+		sala2.getSelectionModel().select(null);
+
+		poczatekPracy3.setValue(null);
+		koniecPracy3.setValue(null);
+		przerwaOd3.setValue(null);
+		przerwaDo3.setValue(null);
+		sala3.getSelectionModel().select(null);
+
+		poczatekPracy4.setValue(null);
+		koniecPracy4.setValue(null);
+		przerwaOd4.setValue(null);
+		przerwaDo4.setValue(null);
+		sala4.getSelectionModel().select(null);
+
+		poczatekPracy5.setValue(null);
+		koniecPracy5.setValue(null);
+		przerwaOd5.setValue(null);
+		przerwaDo5.setValue(null);
+		sala5.getSelectionModel().select(null);
+
+		poczatekPracy6.setValue(null);
+		koniecPracy6.setValue(null);
+		przerwaOd6.setValue(null);
+		przerwaDo6.setValue(null);
+		sala6.getSelectionModel().select(null);
+
+		poczatekPracy7.setValue(null);
+		koniecPracy7.setValue(null);
+		przerwaOd7.setValue(null);
+		przerwaDo7.setValue(null);
+		sala7.getSelectionModel().select(null);
+	}
+
+	private void wczytajPlanPracyDoFormularza(Pracownik wybranyPracownik2) {
+
+		Plan_pracy plan_pracy = planPracyRepository.wczytajPlanPracyPracownika(wybranyPracownik);
+		Set<Plan_dzienny> setPlanowDziennych = plan_pracy.getPlan_dzienny();
+
+		wynagrodzenie.setText(plan_pracy.getWyplata().toString());
+		LocalDate dataZawarciaUmowy = dataUmowy.getValue();
+		dataUmowy.setValue(dataZawarciaUmowy);
+
+		for (Plan_dzienny plan_dzienny : setPlanowDziennych) {
+			// plan na poniedzia³ek
+			if (plan_dzienny.getDzien() == 1) {
+
+				poczatekPracy1.setValue(plan_dzienny.getPoczatek().toLocalTime());
+				koniecPracy1.setValue(plan_dzienny.getKoniec().toLocalTime());
+				przerwaOd1.setValue(plan_dzienny.getPrzerwa_od().toLocalTime());
+				przerwaDo1.setValue(plan_dzienny.getPrzerwa_do().toLocalTime());
+				sala1.getSelectionModel().select(plan_dzienny.getSalaNr_sali());
+			}
+
+			// plan na wtorek
+			if (plan_dzienny.getDzien() == 2) {
+
+				poczatekPracy2.setValue(plan_dzienny.getPoczatek().toLocalTime());
+				koniecPracy2.setValue(plan_dzienny.getKoniec().toLocalTime());
+				przerwaOd2.setValue(plan_dzienny.getPrzerwa_od().toLocalTime());
+				przerwaDo2.setValue(plan_dzienny.getPrzerwa_do().toLocalTime());
+				sala2.getSelectionModel().select(plan_dzienny.getSalaNr_sali());
+			}
+
+			// plan na œrode
+			if (plan_dzienny.getDzien() == 3) {
+
+				poczatekPracy3.setValue(plan_dzienny.getPoczatek().toLocalTime());
+				koniecPracy3.setValue(plan_dzienny.getKoniec().toLocalTime());
+				przerwaOd3.setValue(plan_dzienny.getPrzerwa_od().toLocalTime());
+				przerwaDo3.setValue(plan_dzienny.getPrzerwa_do().toLocalTime());
+				sala3.getSelectionModel().select(plan_dzienny.getSalaNr_sali());
+			}
+
+			// plan na czwartek
+			if (plan_dzienny.getDzien() == 4) {
+
+				poczatekPracy4.setValue(plan_dzienny.getPoczatek().toLocalTime());
+				koniecPracy4.setValue(plan_dzienny.getKoniec().toLocalTime());
+				przerwaOd4.setValue(plan_dzienny.getPrzerwa_od().toLocalTime());
+				przerwaDo4.setValue(plan_dzienny.getPrzerwa_do().toLocalTime());
+				sala4.getSelectionModel().select(plan_dzienny.getSalaNr_sali());
+			}
+
+			// plan na piatek
+			if (plan_dzienny.getDzien() == 5) {
+
+				poczatekPracy5.setValue(plan_dzienny.getPoczatek().toLocalTime());
+				koniecPracy5.setValue(plan_dzienny.getKoniec().toLocalTime());
+				przerwaOd5.setValue(plan_dzienny.getPrzerwa_od().toLocalTime());
+				przerwaDo5.setValue(plan_dzienny.getPrzerwa_do().toLocalTime());
+				sala5.getSelectionModel().select(plan_dzienny.getSalaNr_sali());
+			}
+
+			// plan na sobote
+			if (plan_dzienny.getDzien() == 6) {
+
+				poczatekPracy6.setValue(plan_dzienny.getPoczatek().toLocalTime());
+				koniecPracy6.setValue(plan_dzienny.getKoniec().toLocalTime());
+				przerwaOd6.setValue(plan_dzienny.getPrzerwa_od().toLocalTime());
+				przerwaDo6.setValue(plan_dzienny.getPrzerwa_do().toLocalTime());
+				sala6.getSelectionModel().select(plan_dzienny.getSalaNr_sali());
+			}
+
+			// plan na sobote
+			if (plan_dzienny.getDzien() == 7) {
+
+				poczatekPracy7.setValue(plan_dzienny.getPoczatek().toLocalTime());
+				koniecPracy7.setValue(plan_dzienny.getKoniec().toLocalTime());
+				przerwaOd7.setValue(plan_dzienny.getPrzerwa_od().toLocalTime());
+				przerwaDo7.setValue(plan_dzienny.getPrzerwa_do().toLocalTime());
+				sala7.getSelectionModel().select(plan_dzienny.getSalaNr_sali());
+			}
+		}
 	}
 
 	// pobiera z bazy listê sal i wstawia ich numery w choiceBox
@@ -169,6 +309,7 @@ public class TworzniePlanuPracyController {
 			List<Plan_dzienny> listaPlanowDziennych = new ArrayList<>();
 
 			planPracyRepository.dodajPlanPracownikowi(wybranyPracownik, plan_pracy, plan_pracy.getPlan_dzienny());
+			wyczyscFormularz();
 		}
 
 	}
@@ -190,16 +331,16 @@ public class TworzniePlanuPracyController {
 			Plan_dzienny planNaPoniedzialek = new Plan_dzienny();
 			planNaPoniedzialek.setDzien(1);
 
-			Time czas = new Time((long) poczatekPracy1.getValue().getNano());
+			Time czas = new Time(poczatekPracy1.getValue().getHour(), poczatekPracy1.getValue().getMinute(), 0);
 			planNaPoniedzialek.setPoczatek(czas);
 
-			czas = new Time((long) koniecPracy1.getValue().getNano());
+			czas = new Time(koniecPracy1.getValue().getHour(), koniecPracy1.getValue().getMinute(), 0);
 			planNaPoniedzialek.setKoniec(czas);
 
-			czas = new Time((long) przerwaOd1.getValue().getNano());
+			czas = new Time(przerwaOd1.getValue().getHour(), przerwaOd1.getValue().getMinute(), 0);
 			planNaPoniedzialek.setPrzerwa_od(czas);
 
-			czas = new Time((long) przerwaDo1.getValue().getNano());
+			czas = new Time(przerwaDo1.getValue().getHour(), przerwaDo1.getValue().getMinute(), 0);
 			planNaPoniedzialek.setPrzerwa_do(czas);
 
 			Sala sala = getSalaZListySal(Integer.parseInt(sala1.getValue().toString()));
@@ -219,16 +360,16 @@ public class TworzniePlanuPracyController {
 			Plan_dzienny planNaWtorek = new Plan_dzienny();
 			planNaWtorek.setDzien(2);
 
-			Time czas = new Time((long) poczatekPracy2.getValue().getNano());
+			Time czas = new Time(poczatekPracy2.getValue().getHour(), poczatekPracy2.getValue().getMinute(), 0);
 			planNaWtorek.setPoczatek(czas);
 
-			czas = new Time((long) koniecPracy2.getValue().getNano());
+			czas = new Time(koniecPracy2.getValue().getHour(), koniecPracy2.getValue().getMinute(), 0);
 			planNaWtorek.setKoniec(czas);
 
-			czas = new Time((long) przerwaOd2.getValue().getNano());
+			czas = new Time(przerwaOd2.getValue().getHour(), przerwaOd2.getValue().getMinute(), 0);
 			planNaWtorek.setPrzerwa_od(czas);
 
-			czas = new Time((long) przerwaDo2.getValue().getNano());
+			czas = new Time(przerwaDo2.getValue().getHour(), przerwaDo2.getValue().getMinute(), 0);
 			planNaWtorek.setPrzerwa_do(czas);
 
 			Sala sala = getSalaZListySal(Integer.parseInt(sala2.getValue().toString()));
@@ -248,16 +389,16 @@ public class TworzniePlanuPracyController {
 			Plan_dzienny planNaSrode = new Plan_dzienny();
 			planNaSrode.setDzien(3);
 
-			Time czas = new Time((long) poczatekPracy3.getValue().getNano());
+			Time czas = new Time(poczatekPracy3.getValue().getHour(), poczatekPracy3.getValue().getMinute(), 0);
 			planNaSrode.setPoczatek(czas);
 
-			czas = new Time((long) koniecPracy3.getValue().getNano());
+			czas = new Time(koniecPracy3.getValue().getHour(), koniecPracy3.getValue().getMinute(), 0);
 			planNaSrode.setKoniec(czas);
 
-			czas = new Time((long) przerwaOd3.getValue().getNano());
+			czas = new Time(przerwaOd3.getValue().getHour(), przerwaOd3.getValue().getMinute(), 0);
 			planNaSrode.setPrzerwa_od(czas);
 
-			czas = new Time((long) przerwaDo3.getValue().getNano());
+			czas = new Time(przerwaDo3.getValue().getHour(), przerwaDo3.getValue().getMinute(), 0);
 			planNaSrode.setPrzerwa_do(czas);
 
 			Sala sala = getSalaZListySal(Integer.parseInt(sala3.getValue().toString()));
@@ -277,16 +418,16 @@ public class TworzniePlanuPracyController {
 			Plan_dzienny planNaCzwartek = new Plan_dzienny();
 			planNaCzwartek.setDzien(4);
 
-			Time czas = new Time((long) poczatekPracy4.getValue().getNano());
+			Time czas = new Time(poczatekPracy4.getValue().getHour(), poczatekPracy4.getValue().getMinute(), 0);
 			planNaCzwartek.setPoczatek(czas);
 
-			czas = new Time((long) koniecPracy4.getValue().getNano());
+			czas = new Time(koniecPracy4.getValue().getHour(), koniecPracy4.getValue().getMinute(), 0);
 			planNaCzwartek.setKoniec(czas);
 
-			czas = new Time((long) przerwaOd4.getValue().getNano());
+			czas = new Time(przerwaOd4.getValue().getHour(), przerwaOd4.getValue().getMinute(), 0);
 			planNaCzwartek.setPrzerwa_od(czas);
 
-			czas = new Time((long) przerwaDo4.getValue().getNano());
+			czas = new Time(przerwaDo4.getValue().getHour(), przerwaDo4.getValue().getMinute(), 0);
 			planNaCzwartek.setPrzerwa_do(czas);
 
 			Sala sala = getSalaZListySal(Integer.parseInt(sala4.getValue().toString()));
@@ -306,16 +447,16 @@ public class TworzniePlanuPracyController {
 			Plan_dzienny planNaPiatek = new Plan_dzienny();
 			planNaPiatek.setDzien(5);
 
-			Time czas = new Time((long) poczatekPracy5.getValue().getNano());
+			Time czas = new Time(poczatekPracy5.getValue().getHour(), poczatekPracy5.getValue().getMinute(), 0);
 			planNaPiatek.setPoczatek(czas);
 
-			czas = new Time((long) koniecPracy5.getValue().getNano());
+			czas = new Time(koniecPracy5.getValue().getHour(), koniecPracy5.getValue().getMinute(), 0);
 			planNaPiatek.setKoniec(czas);
 
-			czas = new Time((long) przerwaOd5.getValue().getNano());
+			czas = new Time(przerwaOd5.getValue().getHour(), przerwaOd5.getValue().getMinute(), 0);
 			planNaPiatek.setPrzerwa_od(czas);
 
-			czas = new Time((long) przerwaDo5.getValue().getNano());
+			czas = new Time(przerwaDo5.getValue().getHour(), przerwaDo5.getValue().getMinute(), 0);
 			planNaPiatek.setPrzerwa_do(czas);
 
 			Sala sala = getSalaZListySal(Integer.parseInt(sala5.getValue().toString()));
@@ -335,16 +476,16 @@ public class TworzniePlanuPracyController {
 			Plan_dzienny planNaSobote = new Plan_dzienny();
 			planNaSobote.setDzien(6);
 
-			Time czas = new Time((long) poczatekPracy6.getValue().getNano());
+			Time czas = new Time(poczatekPracy6.getValue().getHour(), poczatekPracy6.getValue().getMinute(), 0);
 			planNaSobote.setPoczatek(czas);
 
-			czas = new Time((long) koniecPracy6.getValue().getNano());
+			czas = new Time(koniecPracy6.getValue().getHour(), koniecPracy6.getValue().getMinute(), 0);
 			planNaSobote.setKoniec(czas);
 
-			czas = new Time((long) przerwaOd6.getValue().getNano());
+			czas = new Time(przerwaOd6.getValue().getHour(), przerwaOd6.getValue().getMinute(), 0);
 			planNaSobote.setPrzerwa_od(czas);
 
-			czas = new Time((long) przerwaDo6.getValue().getNano());
+			czas = new Time(przerwaDo6.getValue().getHour(), przerwaDo6.getValue().getMinute(), 0);
 			planNaSobote.setPrzerwa_do(czas);
 
 			Sala sala = getSalaZListySal(Integer.parseInt(sala6.getValue().toString()));
@@ -364,16 +505,16 @@ public class TworzniePlanuPracyController {
 			Plan_dzienny planNaNiedziele = new Plan_dzienny();
 			planNaNiedziele.setDzien(7);
 
-			Time czas = new Time((long) poczatekPracy7.getValue().getNano());
+			Time czas = new Time(poczatekPracy7.getValue().getHour(), poczatekPracy7.getValue().getMinute(), 0);
 			planNaNiedziele.setPoczatek(czas);
 
-			czas = new Time((long) koniecPracy7.getValue().getNano());
+			czas = new Time(koniecPracy7.getValue().getHour(), koniecPracy7.getValue().getMinute(), 0);
 			planNaNiedziele.setKoniec(czas);
 
-			czas = new Time((long) przerwaOd7.getValue().getNano());
+			czas = new Time(przerwaOd7.getValue().getHour(), przerwaOd7.getValue().getMinute(), 0);
 			planNaNiedziele.setPrzerwa_od(czas);
 
-			czas = new Time((long) przerwaDo7.getValue().getNano());
+			czas = new Time(przerwaDo7.getValue().getHour(), przerwaDo7.getValue().getMinute(), 0);
 			planNaNiedziele.setPrzerwa_do(czas);
 
 			Sala sala = getSalaZListySal(Integer.parseInt(sala7.getValue().toString()));
