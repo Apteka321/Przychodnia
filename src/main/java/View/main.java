@@ -20,11 +20,15 @@ import model.Lekarz;
 import model.Osoba;
 import model.Plan_dzienny;
 import model.Plan_pracy;
+import model.Pracownik;
 import model.Specjalizacja;
 import model.Sala;
 
 public class main {
 
-
+	public static void main(String[] args) {
+		Pracownik prac = new Lekarz();
+		System.out.println(prac.getClass().getSimpleName());
+	}
 
 }

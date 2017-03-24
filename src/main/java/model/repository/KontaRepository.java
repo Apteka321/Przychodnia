@@ -28,4 +28,7 @@ public interface KontaRepository {
 	public List<Lekarz> getListaLekarzy();
 
 	public List<Recepcjonistka> getListaRecepcjonistek();
+	
+	public void aktualizujPracownika(Pracownik pracownik);
+
 }

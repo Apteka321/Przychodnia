@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import View.Komunikaty;
 import View.RejestracjaPracownikowMain;
@@ -18,8 +19,10 @@ import javafx.stage.StageStyle;
 import model.HibernateUtil;
 import model.Konto;
 import model.Lekarz;
+import model.Osoba;
 import model.Pacjent;
 import model.Pielegniarka;
+import model.Pracownik;
 import model.Recepcjonistka;
 import model.repository.KontaRepository;
 
@@ -41,17 +44,18 @@ public class KontaRepositoryImpl implements KontaRepository {
 	}
 
 	public void dodajKontoPielegniarki(Pielegniarka pielegniarka) {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
-			session.beginTransaction();
-			session.save(pielegniarka);
+		// try {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		session.save(pielegniarka);
 
-			session.getTransaction().commit();
-			session.close();
-			Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto pielegniarki!");
-		} catch (Exception e) {
-			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ pielêgniarki!");
-		}
+		session.getTransaction().commit();
+		session.close();
+		Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto pielegniarki!");
+		/*
+		 * } catch (Exception e) { Komunikaty.wyswietlOstrzezenie("B³¹d",
+		 * "Nie mo¿na dodaæ pielêgniarki!"); }
+		 */
 
 	}
 
@@ -174,5 +178,21 @@ public class KontaRepositoryImpl implements KontaRepository {
 		return listaRecepcjonistek;
 	}
 
+	public void aktualizujPracownika(Pracownik pracownik) {
+
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			session.update(pracownik.getClass().getSimpleName(), pracownik);
+			transaction.commit();
+			session.close();
+
+		} catch (
+
+		Exception e) {
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na zaktualizowaæ pracownika!");
+		}
+
+	}
 
 }

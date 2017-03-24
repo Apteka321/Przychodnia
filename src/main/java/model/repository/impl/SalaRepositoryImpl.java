@@ -20,16 +20,15 @@ public class SalaRepositoryImpl implements SalaRepository {
 		List<Sala> listaSal = new ArrayList<Sala>();
 		String hql = "FROM Sala";
 
-		// try {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Query query = session.createQuery(hql);
-		listaSal.addAll(query.list());
-		session.close();
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			listaSal.addAll(query.list());
+			session.close();
 
-		/*
-		 * } catch (Exception e) { Komunikaty.wyswietlOstrzezenie("B³¹d",
-		 * "Nie mo¿na Pobraæ listy sal!"); }
-		 */
+		} catch (Exception e) {
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy sal!");
+		}
 
 		return listaSal;
 	}
