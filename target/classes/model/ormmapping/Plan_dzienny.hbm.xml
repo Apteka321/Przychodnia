@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--
-Licensee: The State School of Higher Vocational Education in Jaroslaw
-License Type: Academic
--->
+<!-- Licensee: The State School of Higher Vocational Education in Jaroslaw 
+	License Type: Academic -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="model.Plan_dzienny" table="Plan_dzienny" lazy="false">
@@ -10,16 +8,22 @@ License Type: Academic
 			<generator class="native">
 			</generator>
 		</id>
-		<property name="dzien" column="Dzien" type="integer" length="7" not-null="true" lazy="false"/>
-		<property name="poczatek" column="Poczatek" type="time" not-null="true" lazy="false"/>
-		<property name="koniec" column="Koniec" type="time" not-null="true" lazy="false"/>
-		<property name="przerwa_od" column="Przerwa_od" type="time" not-null="true" lazy="false"/>
-		<property name="przerwa_do" column="Przerwa_do" type="time" not-null="true" lazy="false"/>
-		<many-to-one name="salaNr_sali" column="SalaNr_sali" class="model.Sala" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		<property name="dzien" column="Dzien" type="integer" length="7"
+			not-null="true" lazy="false" />
+		<property name="poczatek" column="Poczatek" type="time"
+			not-null="true" lazy="false" />
+		<property name="koniec" column="Koniec" type="time" not-null="true"
+			lazy="false" />
+		<property name="przerwa_od" column="Przerwa_od" type="time"
+			not-null="true" lazy="false" />
+		<property name="przerwa_do" column="Przerwa_do" type="time"
+			not-null="true" lazy="false" />
+		<many-to-one name="salaNr_sali" column="SalaNr_sali"
+			class="model.Sala" cascade="save-update,lock" unique="true" not-null="true"
+			lazy="proxy">
 		</many-to-one>
-		<set name="plan_pracy" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="Plan_dziennyID" not-null="true"/>
-			<one-to-many class="model.Plan_pracy"/>
-		</set>
+		<many-to-one name="plan_pracy" cascade="lock"
+			column="Plan_pracyID" class="model.Plan_pracy" not-null="true" lazy="proxy">
+		</many-to-one>
 	</class>
 </hibernate-mapping>
