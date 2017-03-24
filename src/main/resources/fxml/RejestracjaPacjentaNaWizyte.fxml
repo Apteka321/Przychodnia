@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="440.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RejestracjaPacjentaNaWizyteController">
+   <children>
+      <ChoiceBox fx:id="lekarz" layoutX="132.0" layoutY="48.0" prefWidth="150.0" style="-fx-background-color: #2598f3;">
+         <effect>
+            <DropShadow />
+         </effect></ChoiceBox>
+      <JFXDatePicker fx:id="data" cache="true" defaultColor="#2598f3" layoutX="472.0" layoutY="77.0" promptText="Data" showWeekNumbers="true" />
+      <JFXButton layoutX="492.0" layoutY="395.0" onAction="#dodajWizyte" ripplerFill="BLACK" style="-fx-background-color: #2598f3;" text="Dodaj wizyte" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="413.0" layoutY="396.0" ripplerFill="BLACK" style="-fx-background-color: #2598f3;" text="Anuluj" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <ChoiceBox fx:id="ubezpieczenie" layoutX="132.0" layoutY="79.0" prefWidth="150.0" style="-fx-background-color: #2598f3;">
+         <effect>
+            <DropShadow />
+         </effect></ChoiceBox>
+      <ChoiceBox fx:id="specjalizacja" layoutX="132.0" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="150.0" style="-fx-background-color: #2598f3;">
+         <effect>
+            <DropShadow />
+         </effect></ChoiceBox>
+      <JFXButton layoutX="301.0" layoutY="22.0" onAction="#rejestracjaPacjenta" ripplerFill="BLACK" style="-fx-background-color: #2598f3;" text="Rejestracja Pacjenta" textFill="WHITE">
+         <effect>
+            <DropShadow />
+         </effect>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tabelaPacjentow" layoutX="14.0" layoutY="119.0" onMouseClicked="#klikniecieNaTabele" prefHeight="263.0" prefWidth="617.0">
+        <columns>
+          <TableColumn fx:id="tabelaPESEL" prefWidth="191.0" text="PESEL" />
+          <TableColumn fx:id="tabelaImie" prefWidth="194.0" text="Imie" />
+            <TableColumn fx:id="tabelaNazwisko" prefWidth="231.0" text="Nazwisko" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="szukaj" focusColor="#2598f3" layoutX="14.0" layoutY="382.0" onKeyPressed="#metodaSzukaj" promptText="Szukaj">
+         <font>
+            <Font size="14.0" />
+         </font></JFXTextField>
+      <JFXTimePicker fx:id="godzina" defaultColor="#2598f3" layoutX="301.0" layoutY="77.0" promptText="Godzina" />
+      <Label layoutX="34.0" layoutY="17.0" text="Specjalizacja">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="50.0" text="Lekarz">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="81.0" text="Ubezpieczenie">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

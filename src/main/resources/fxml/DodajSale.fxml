@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="334.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DodajSaleController">
+   <children>
+      <JFXButton fx:id="wybierzSale" layoutX="203.0" layoutY="74.0" onAction="#wybierzSale" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Wybierz" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <ChoiceBox fx:id="listaSal" layoutX="11.0" layoutY="76.0" prefHeight="25.0" prefWidth="157.0" style="-fx-background-color: #2d9dd2;" />
+      <JFXTextField fx:id="numerSali" focusColor="#2d9dd2" labelFloat="true" layoutX="14.0" layoutY="129.0" prefHeight="28.0" prefWidth="157.0" promptText="Numer sali">
+         <font>
+            <Font size="14.0" />
+         </font></JFXTextField>
+      <JFXTextArea fx:id="opisSali" focusColor="#2d9dd2" labelFloat="true" layoutX="12.0" layoutY="183.0" prefHeight="87.0" prefWidth="277.0" promptText="Opis sali">
+         <font>
+            <Font size="14.0" />
+         </font></JFXTextArea>
+      <JFXButton layoutX="222.0" layoutY="294.0" onAction="#dodajSale" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Dodaj" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="edytujSale" layoutX="150.0" layoutY="294.0" onAction="#edytujSale" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Edycja" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="usunSale" layoutX="89.0" layoutY="294.0" onAction="#usunSale" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Usuń" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="14.0" layoutY="294.0" onAction="#anuluj" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Anuluj" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <Separator layoutY="278.0" prefHeight="0.0" prefWidth="300.0" />
+      <Separator layoutY="53.0" prefHeight="3.0" prefWidth="300.0" />
+      <Label alignment="CENTER" layoutX="2.0" prefHeight="53.0" prefWidth="294.0" text="Dodaj sale">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

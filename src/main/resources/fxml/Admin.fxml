@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminController">
+   <children>
+      <JFXButton layoutX="74.0" layoutY="45.0" onAction="#edytujZabieg" text="Zabieg" />
+      <JFXButton layoutX="59.0" layoutY="100.0" onAction="#edytujSpecjalizacje" text="Specjalizacje" />
+      <JFXButton layoutX="75.0" layoutY="149.0" onAction="#dodajSale" text="Dodaj sale" />
+   </children>
+</AnchorPane>
