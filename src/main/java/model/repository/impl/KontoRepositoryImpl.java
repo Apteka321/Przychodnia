@@ -46,14 +46,20 @@ public class KontoRepositoryImpl implements KontoRepository {
 	}
 
 	public String wczytanieLoginuZPliku(String adresDoPliku) throws FileNotFoundException {
-		File file = new File(adresDoPliku);
-		String zdanie = null;
-		if (file.isFile()) {
-			Scanner in = new Scanner(file);
-			zdanie = in.nextLine();
-		} else {
-			PrintWriter zapis = new PrintWriter(adresDoPliku);
+		String zdanie = "";
+		try {
+			File file = new File(adresDoPliku);
+			
+			if (file.isFile()) {
+				Scanner in = new Scanner(file);
+				zdanie = in.nextLine();
+			} else {
+				PrintWriter zapis = new PrintWriter(adresDoPliku);
 
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return zdanie;
 	}
@@ -83,14 +89,12 @@ public class KontoRepositoryImpl implements KontoRepository {
 		primaryStage.show();
 
 	}
-	
+
 	/*
-	 * #########################################################
-	 *     OD Arka
+	 * ######################################################### OD Arka
 	 * #########################################################
 	 */
-	
-	
+
 	public void dodajKontoAdministratora(Konto kontoAdministratora) {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
@@ -98,7 +102,7 @@ public class KontoRepositoryImpl implements KontoRepository {
 			session.save(kontoAdministratora);
 
 			session.getTransaction().commit();
-			
+
 			Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto administratora!");
 		} catch (Exception e) {
 			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ administratora!");
@@ -113,7 +117,7 @@ public class KontoRepositoryImpl implements KontoRepository {
 			session.save(pielegniarka);
 
 			session.getTransaction().commit();
-		
+
 			Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto pielegniarki!");
 		} catch (Exception e) {
 			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ pielêgniarki!");
@@ -128,7 +132,7 @@ public class KontoRepositoryImpl implements KontoRepository {
 			session.save(recepcjonistka);
 
 			session.getTransaction().commit();
-		
+
 			Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto recepcjonistki!");
 		} catch (Exception e) {
 			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ recepcjonistki!");
@@ -175,7 +179,6 @@ public class KontoRepositoryImpl implements KontoRepository {
 			Query query = (Query) session.createQuery(hql);
 			listaPielegniarek.addAll(((org.hibernate.Query) query).list());
 
-
 		} catch (Exception e) {
 			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy pielegniarek!");
 		}
@@ -198,7 +201,6 @@ public class KontoRepositoryImpl implements KontoRepository {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Query query = (Query) session.createQuery(hql);
 			listaLekarzy.addAll(((org.hibernate.Query) query).list());
-	
 
 		} catch (Exception e) {
 			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy Lekarzy!");
@@ -223,7 +225,6 @@ public class KontoRepositoryImpl implements KontoRepository {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Query query = (Query) session.createQuery(hql);
 			listaRecepcjonistek.addAll(((org.hibernate.Query) query).list());
-		
 
 		} catch (Exception e) {
 			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy recepcjonistek!");
@@ -239,6 +240,5 @@ public class KontoRepositoryImpl implements KontoRepository {
 		}
 		return listaRecepcjonistek;
 	}
-	
 
 }
