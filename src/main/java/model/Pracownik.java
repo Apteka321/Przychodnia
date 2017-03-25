@@ -13,4 +13,8 @@ public interface Pracownik {
 
 	public Plan_pracy getPlan_pracy();
 
+	public void setID(int ID);
+
+	public int getID();
+
 }
