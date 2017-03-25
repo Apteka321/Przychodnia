@@ -15,9 +15,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RejestracjaPracownikowController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RejestracjaPracownikowController">
 	<children>
-		<BorderPane prefHeight="728.0" prefWidth="400.0" style="-fx-background-color: white;">
+		<BorderPane prefHeight="704.0" prefWidth="400.0" style="-fx-background-color: white;">
 			<top>
 				<Label text="Rejestracja pracowników" BorderPane.alignment="CENTER">
 					<font>
@@ -29,7 +29,7 @@
 				</Label>
 			</top>
 			<center>
-				<BorderPane prefHeight="595.0" prefWidth="400.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+				<BorderPane prefHeight="644.0" prefWidth="400.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
 					<padding>
 						<Insets top="10.0" />
 					</padding>
@@ -37,7 +37,7 @@
 						<ChoiceBox fx:id="typKonta" prefWidth="150.0" style="-fx-background-color: #2598f3;" BorderPane.alignment="CENTER" />
 					</top>
 					<center>
-						<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="400.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+						<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="400.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
 							<children>
 								<Pane fx:id="rejestracjaPracownikaPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="400.0" style="-fx-background-color: white;">
 									<children>

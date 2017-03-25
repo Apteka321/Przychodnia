@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class main extends Application {
+public class ZarzadzabnieLekami extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
@@ -15,16 +15,14 @@ public class main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(this.getClass().getResource("/fxml/panelAdministracyjny.fxml"));
+		loader.setLocation(this.getClass().getResource("/fxml/zarzadzanieLekami.fxml"));
 		Pane Pane = loader.load();
 		Scene scene = new Scene(Pane);
 
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Panel Administracyjny");
+		primaryStage.setTitle("Rejestracja pracownika");
 		primaryStage.show();
 
 	}
-
-
 
 }
