@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListaZamowienController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" minWidth="315.0" prefHeight="471.0" prefWidth="715.0">
+         <children>
+            <TableView fx:id="tabelaZamowien" layoutY="88.0" prefHeight="327.0" prefWidth="489.0" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="88.0">
+               <columns>
+                  <TableColumn fx:id="kolumnaZaznaczZamowienie" maxWidth="5000.0" minWidth="10.0" prefWidth="54.0" text="Zaznacz" />
+                  <TableColumn fx:id="kolumnaIdZamowienia" maxWidth="5000.0" minWidth="10.0" prefWidth="113.0" text="Id zamówienia" />
+                  <TableColumn fx:id="kolumnaNumerSali" maxWidth="5000.0" minWidth="10.0" prefWidth="73.0" text="Nr Sali" />
+                  <TableColumn fx:id="kolumnaDataZamowienia" maxWidth="458.0" minWidth="10.0" prefWidth="133.0" text="Data zamówienia" />
+                  <TableColumn fx:id="kolumnaGodzina" maxWidth="427.0" minWidth="10.0" prefWidth="78.0" text="Godzina " />
+                  <TableColumn fx:id="kolumnaZleceniodawca" maxWidth="5000.0" minWidth="10.0" prefWidth="136.0" text="Zleceniodawca" />
+                  <TableColumn fx:id="kolumnaStatus" maxWidth="427.0" minWidth="10.0" prefWidth="107.0" text="Status" />
+               </columns>
+            </TableView>
+            <HBox id="HBox" alignment="CENTER" prefHeight="27.0" prefWidth="754.0" spacing="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <children>
+                  <Label text="Lista zamówień produktów">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <JFXButton fx:id="usunZaznaczoneZamowieniaButton" alignment="CENTER" layoutX="430.0" layoutY="54.0" onAction="#usunZaznaczoneZamowienia" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #C62828;" text="Usuń zaznaczone" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="MINUS" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="utworzNoweZamowienieButton" alignment="CENTER" layoutX="565.0" layoutY="54.0" onAction="#utworzNoweZamowienie" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: #2d9dd2#B71C1C;" text="Nowe Zamówienie" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CHECK" text="" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
