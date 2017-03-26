@@ -46,20 +46,16 @@ public class KontoRepositoryImpl implements KontoRepository {
 	}
 
 	public String wczytanieLoginuZPliku(String adresDoPliku) throws FileNotFoundException {
-		String zdanie = "";
-		try {
-			File file = new File(adresDoPliku);
-			
-			if (file.isFile()) {
-				Scanner in = new Scanner(file);
-				zdanie = in.nextLine();
-			} else {
-				PrintWriter zapis = new PrintWriter(adresDoPliku);
+		File file = new File(adresDoPliku);
+		String zdanie = null;
+		if (file.isFile()) {
+			Scanner in = new Scanner(file);
+			zdanie = in.nextLine();
+		} else {
+			PrintWriter zapis = new PrintWriter(adresDoPliku);
+			zapis.print(" ");
+			zapis.close();
 
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return zdanie;
 	}
