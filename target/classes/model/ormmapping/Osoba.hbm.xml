@@ -11,7 +11,7 @@ License Type: Academic
 			</generator>
 		</id>
 		<property name="imie" column="Imie" type="string" length="50" not-null="true" lazy="false"/>
-		<property name="nazwisko" column="Nazwisko" type="integer" length="11" not-null="true" lazy="false"/>
+		<property name="nazwisko" column="Nazwisko" type="string" length="255" not-null="true" lazy="false"/>
 		<property name="miejscowosc" column="Miejscowosc" type="string" length="50" not-null="true" lazy="false"/>
 		<property name="numer_domu" column="Numer_domu" type="integer" length="10" not-null="true" lazy="false"/>
 		<property name="ulica" column="Ulica" type="string" length="100" not-null="false" lazy="false"/>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AdminController">
+   <children>
+      <JFXButton layoutX="63.0" layoutY="31.0" onAction="#dodajSpecjaliste" text="Dodaj specjaliste" />
+      <JFXButton layoutX="63.0" layoutY="138.0" onAction="#dodajZabieg" text="Dodaj Zabieg" />
+      <JFXButton layoutX="74.0" layoutY="88.0" onAction="#edytujZabieg" text="Edytuj zabieg" />
+      <JFXButton layoutX="14.0" layoutY="163.0" onAction="#edytujSpecjalizacje" text="Edytuj specjalizacje" />
+   </children>
+</AnchorPane>

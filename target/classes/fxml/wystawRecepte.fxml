@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="759.0" style="-fx-background-color: WHITE;" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WystawienieReceptyController">
+   <children>
+      <VBox prefHeight="539.0" prefWidth="731.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="78.0" prefWidth="731.0" text="Wystawianie recepty" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <HBox alignment="TOP_CENTER" prefHeight="49.0" prefWidth="600.0" style="-fx-background-color: WHITE;">
+               <children>
+                  <ChoiceBox fx:id="listaLekow" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #D3D3D3; -fx-border-radius: 2%;" />
+                  <TextField fx:id="refundacjaTextField" alignment="TOP_CENTER" prefHeight="25.0" prefWidth="90.0" promptText="Refundacja %">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <JFXTextArea fx:id="dawkowanieTextField" prefHeight="44.0" prefWidth="297.0" promptText="dawkowanie" style="-fx-border-color: #D3D3D3; -fx-border-radius: 1%;">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
+                  </JFXTextArea>
+                  <JFXButton onAction="#dodajLekDoListy" prefHeight="50.0" prefWidth="125.0" ripplerFill="WHITE" style="-fx-background-color: #2d9dd2;" text="Dodaj lek" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <TableView fx:id="tabela">
+              <columns>
+                <TableColumn fx:id="nazwaLekuColumn" editable="false" prefWidth="155.0" text="Nazwa leku" />
+                  <TableColumn fx:id="producentColumn" editable="false" prefWidth="116.0" sortable="false" text="Producent" />
+                  <TableColumn fx:id="refundacjaColumn" editable="false" prefWidth="109.0" sortable="false" text="Refundacja" />
+                  <TableColumn fx:id="dawkowanieColumn" editable="false" minWidth="0.0" prefWidth="294.0" sortable="false" text="Dawkowanie" />
+                  <TableColumn fx:id="usunColumn" editable="false" minWidth="0.0" prefWidth="50.0" sortable="false" />
+              </columns>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+               </VBox.margin>
+            </TableView>
+            <HBox prefHeight="35.0" prefWidth="600.0">
+               <children>
+                  <Label prefHeight="30.0" prefWidth="130.0" text="Data realizacji (od dnia) :" />
+                  <JFXDatePicker fx:id="dataRezalizacji" defaultColor="#2d9dd2" prefHeight="28.0" prefWidth="101.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="62.0" prefWidth="731.0">
+               <children>
+                  <JFXButton onAction="#zapiszRecepte" prefHeight="50.0" prefWidth="125.0" ripplerFill="WHITE" style="-fx-background-color: #2d9dd2;" text="Zapisz" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SAVE" glyphStyle="floppy-o" size="20" />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#drukujRecepte" prefHeight="50.0" prefWidth="125.0" ripplerFill="WHITE" style="-fx-background-color: #2d9dd2;" text="Drukuj" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="PRINT" size="20" />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</Pane>

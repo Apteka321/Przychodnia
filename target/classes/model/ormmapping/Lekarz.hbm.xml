@@ -14,7 +14,7 @@ License Type: Academic
 		</many-to-one>
 		<many-to-one name="konto" column="KontoID" class="model.Konto" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
 		</many-to-one>
-		<many-to-one name="plan_pracy" column="Plan_pracyID" class="model.Plan_pracy" cascade="save-update,lock" unique="true" not-null="true" lazy="proxy">
+		<many-to-one name="plan_pracy" column="Plan_pracyID" class="model.Plan_pracy" cascade="save-update,lock" unique="true" not-null="false" lazy="proxy">
 		</many-to-one>
 		<set name="ID_Specjalizacji" table="Specjalizacja_lekarza" lazy="true" cascade="save-update,lock">
 			<key column="`ID lekarza`" not-null="true"/>

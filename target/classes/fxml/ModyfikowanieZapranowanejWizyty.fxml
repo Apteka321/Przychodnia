@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="343.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModyfikowanieZapranowanejWizytyController">
+   <children>
+      <TableView fx:id="listaPacjentow" onMouseClicked="#klikniecieNaTabele" prefHeight="262.0" prefWidth="541.0">
+        <columns>
+            <TableColumn fx:id="kolumnaID" minWidth="0.0" prefWidth="0.0" text="ID" />
+          <TableColumn fx:id="kolumnaPesel" prefWidth="119.0" text="PESEL" />
+            <TableColumn fx:id="kolumnaImie" prefWidth="99.0" text="Nazwisko" />
+            <TableColumn fx:id="kolumnaNazwisko" prefWidth="100.0" text="Imie" />
+          <TableColumn fx:id="kolumnaDataWizyty" prefWidth="121.0" text="Data wizyty" />
+            <TableColumn fx:id="kolumnaGodzinaWizyty" prefWidth="96.0" text="Godzina wizyty" />
+        </columns>
+      </TableView>
+      <JFXDatePicker fx:id="dataWizyt" defaultColor="#2598f3" layoutX="185.0" layoutY="263.0" prefHeight="14.0" prefWidth="171.0" promptText="Data" />
+      <JFXButton layoutX="421.0" layoutY="299.0" onAction="#aktualizuj" ripplerFill="BLACK" style="-fx-background-color: #2598f3;" text="Aktualizuj" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="szukaj" focusColor="#2598f3" layoutY="264.0" onKeyPressed="#metodaSzukaj" promptText="Szukaj" />
+      <JFXTimePicker fx:id="godzinaWizyty" defaultColor="#2598f3" layoutX="357.0" layoutY="263.0" prefHeight="14.0" prefWidth="171.0" promptText="Godzina" />
+      <JFXButton layoutX="342.0" layoutY="299.0" onAction="#anuluj" ripplerFill="BLACK" style="-fx-background-color: #2598f3;" text="Anuluj" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
