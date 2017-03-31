@@ -9,13 +9,15 @@
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.characterEncoding">utf-8</property>
 
-
-	<!-- 	<property name="connection.url">jdbc:mysql://adm.dev.pwste.edu.pl:3306/db0215</property> -->
-		<property name="connection.url">jdbc:mysql://localhost:3306/przychodnia</property>
-		<!-- <property name="connection.username">s32149</property> -->
-		<property name="connection.username">root</property>
-		<!-- <property name="connection.password">marcinkiki</property> -->
+<!-- 		<property name="connection.url">jdbc:mysql://localhost:3306/przychodnia</property>
 		<property name="connection.password"></property>
+		<property name="connection.username">root</property> -->
+
+		<property name="connection.url">jdbc:mysql://adm.dev.pwste.edu.pl:3306/db0215</property>
+		<property name="connection.username">s32149</property>
+		<property name="connection.password">marcinkiki</property>
+		
+
 		<property name="show_sql">true</property>
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
 		<!-- mapping files -->
