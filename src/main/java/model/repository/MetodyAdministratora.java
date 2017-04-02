@@ -3,6 +3,7 @@ package model.repository;
 import java.math.BigDecimal;
 import java.util.List;
 
+import Controller.EdytujSpecjalizacjeController.wyborSpecjalziacji;
 import javafx.scene.control.ChoiceBox;
 
 public interface MetodyAdministratora {
@@ -27,7 +28,8 @@ public interface MetodyAdministratora {
 	public void edycjaSali(int numerSali, String opisSali,ChoiceBox<Integer> listaSal);
 	public Integer wybranegoSaliDoEdycji(ChoiceBox<Integer> listaSal);
 	public void usunSale(ChoiceBox<Integer> listaSal);
-
+	public List<String> wypiszLekarz();
+	public void dodajSpecjalizacje(List<wyborSpecjalziacji> nawaSpecjalizacji,String nazwaLekarza);
 	
 
 }

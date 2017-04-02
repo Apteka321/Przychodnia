@@ -49,22 +49,12 @@ public class RejestracjaPracownikowController {
 
 				rejestrowaneKonto = wybranyTypRejestrowanegoKonta + 1;
 
-				switch (wybranyTypRejestrowanegoKonta) {
-				case 0:
+				if (wybranyTypRejestrowanegoKonta == 0) {
+
 					wyswietlFormularzRejestracyjnyAdministratora();
-					break;
+				} else {
 
-				case 1:
 					wyswietlFormularzRejestracyjnyPracownika();
-					break;
-
-				case 2:
-					wyswietlFormularzRejestracyjnyPracownika();
-					break;
-
-				case 3:
-					wyswietlFormularzRejestracyjnyPracownika();
-					break;
 				}
 			}
 

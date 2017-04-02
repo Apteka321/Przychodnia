@@ -1,7 +1,5 @@
 package model.repository.impl;
 
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -11,15 +9,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import View.Komunikaty;
-import View.RejestracjaPracownikowMain;
-import javafx.print.Collation;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.stage.StageStyle;
 import model.HibernateUtil;
 import model.Konto;
 import model.Lekarz;
-import model.Osoba;
 import model.Pacjent;
 import model.Pielegniarka;
 import model.Pracownik;
@@ -44,18 +36,18 @@ public class KontaRepositoryImpl implements KontaRepository {
 	}
 
 	public void dodajKontoPielegniarki(Pielegniarka pielegniarka) {
-		// try {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.beginTransaction();
-		session.save(pielegniarka);
+		//try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			session.beginTransaction();
+			session.save(pielegniarka);
 
-		session.getTransaction().commit();
-		session.close();
-		Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto pielegniarki!");
-		/*
-		 * } catch (Exception e) { Komunikaty.wyswietlOstrzezenie("B³¹d",
-		 * "Nie mo¿na dodaæ pielêgniarki!"); }
-		 */
+			session.getTransaction().commit();
+			session.close();
+			Komunikaty.wyswietlInformacje("Sukces", "Pomyœlnie dodano konto pielegniarki!");
+
+/*		} catch (Exception e) {
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na dodaæ pielêgniarki!");
+		}*/
 
 	}
 
@@ -186,13 +178,46 @@ public class KontaRepositoryImpl implements KontaRepository {
 			session.update(pracownik.getClass().getSimpleName(), pracownik);
 			transaction.commit();
 			session.close();
-
 		} catch (
 
 		Exception e) {
 			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na zaktualizowaæ pracownika!");
 		}
+	}
 
+	public List<Pacjent> getListaPacjentow() {
+		List<Pacjent> listaPacjentow = new ArrayList<Pacjent>();
+		String hql = "FROM Pacjent";
+
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			listaPacjentow.addAll(query.list());
+			session.close();
+
+		} catch (Exception e) {
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy pacjentow!");
+		}
+
+		return listaPacjentow;
+	}
+
+	public Pacjent getPacjentowByPESEL(String PESEL) {
+		Pacjent pacjent = new Pacjent();
+		String hql = "FROM Pacjent P WHERE P.PESEL = :pesel";
+
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			query.setParameter("pesel", PESEL);
+			pacjent = (Pacjent) query.list().get(0);
+			session.close();
+
+		} catch (Exception e) {
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy pacjentow!");
+		}
+
+		return pacjent;
 	}
 
 }

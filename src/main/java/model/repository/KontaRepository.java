@@ -30,5 +30,9 @@ public interface KontaRepository {
 	public List<Recepcjonistka> getListaRecepcjonistek();
 	
 	public void aktualizujPracownika(Pracownik pracownik);
+	
+	public List<Pacjent> getListaPacjentow();
+	
+	public Pacjent getPacjentowByPESEL(String PESEL);
 
 }

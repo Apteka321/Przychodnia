@@ -61,7 +61,7 @@ public class Leki {
 	private int procent_refundacji;
 	
 	public String toString() {
-		return String.valueOf(getID());
+		return this.getNazwa() + " " + this.getProducent();
 	}
 	
 }

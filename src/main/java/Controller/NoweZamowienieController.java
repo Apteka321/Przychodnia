@@ -7,6 +7,7 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -18,13 +19,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.Pielegniarka;
+import model.Sala;
+import model.repository.SalaRepository;
 import model.repository.impl.KontoRepositoryImpl;
+import model.repository.impl.SalaRepositoryImpl;
 import model.repository.impl.WalidacjaFormularzaImpl;
 import model.repository.impl.ZamowienieImpl;
 
@@ -48,8 +54,9 @@ public class NoweZamowienieController implements Initializable {
 	/**
 	 * Zmienne pol formularza
 	 */
+
 	@FXML
-	private TextField inputNrSali;
+	private ChoiceBox<Sala> inputNrSali;
 	@FXML
 	private TextField inputNazwaProduktu;
 	@FXML
@@ -75,9 +82,7 @@ public class NoweZamowienieController implements Initializable {
 	/**
 	 * Pobranie produktów do listy zamówienia
 	 */
-	final ObservableList<ProduktZamowienia> listaPrzedmiotowZamowienia = FXCollections.observableArrayList(
-			new ProduktZamowienia(1, "Czopki extra", 10, new CheckBox()),
-			new ProduktZamowienia(1, "Czopki junior", 100, new CheckBox()));
+	final ObservableList<ProduktZamowienia> listaPrzedmiotowZamowienia = FXCollections.observableArrayList();
 	@FXML
 	private JFXButton utworzZamowienieButton;
 
@@ -89,6 +94,10 @@ public class NoweZamowienieController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		List<Sala> listaSal = new SalaRepositoryImpl().getListaSal();
+		inputNrSali.getItems().addAll(listaSal);
+		inputNrSali.getSelectionModel().select(0);
+
 		kolumnaZaznaczProdukt
 				.setCellValueFactory(new PropertyValueFactory<ProduktZamowienia, Boolean>("zaznaczonyProdukt"));
 		kolumnaNrSali.setCellValueFactory(new PropertyValueFactory<ProduktZamowienia, Integer>("nrSali"));
@@ -96,7 +105,6 @@ public class NoweZamowienieController implements Initializable {
 		kolumnaIloscProduktow.setCellValueFactory(new PropertyValueFactory<ProduktZamowienia, Integer>("ilosc"));
 
 		listaProduktow.setItems(listaPrzedmiotowZamowienia);
-
 	}
 
 	/**
@@ -109,14 +117,13 @@ public class NoweZamowienieController implements Initializable {
 		 * formularza
 		 */
 
-		boolean sala = walidacjaFormularza.sprawdzCzyPoleFomrularzaPuste(inputNrSali, nrSaliLabel, "*pole wymagene");
 		boolean nazwa = walidacjaFormularza.sprawdzCzyPoleFomrularzaPuste(inputNazwaProduktu, nazwaProduktuLabel,
 				"*pole wymagene");
 		boolean ilosc = walidacjaFormularza.sprawdzCzyPoleFomrularzaPuste(inputIloscProduktu, iloscLabel,
 				"*pole wymagene");
 
-		if (sala && ilosc && nazwa) {
-			ProduktZamowienia produktZamowienia = new ProduktZamowienia(Integer.parseInt(inputNrSali.getText()),
+		if (ilosc && nazwa) {
+			ProduktZamowienia produktZamowienia = new ProduktZamowienia(inputNrSali.getValue(),
 					inputNazwaProduktu.getText(), Integer.parseInt(inputIloscProduktu.getText()), new CheckBox());
 			// Dodanie produktu do list zamówienia
 			listaPrzedmiotowZamowienia.add(produktZamowienia);
@@ -127,7 +134,6 @@ public class NoweZamowienieController implements Initializable {
 
 	private void clearForm() {
 
-		inputNrSali.clear();
 		inputNazwaProduktu.clear();
 		inputIloscProduktu.clear();
 
@@ -161,27 +167,27 @@ public class NoweZamowienieController implements Initializable {
 		Pielegniarka pielegniarka = new Pielegniarka();
 		pielegniarka = noweZamowieneiImpl.pobierzPielegnierkeWedlugID(1);
 		noweZamowieneiImpl.utworzZamowienie(listaPrzedmiotowZamowienia, pielegniarka);
-		((Node) (event.getSource())).getScene().getWindow().hide();
+		Stage stage = (Stage) inputNazwaProduktu.getScene().getWindow();
+		stage.close();
 		kontoRepositoryImpl.otwarcieNowejScenyZAdresu("/fxml/ListaZamowien.fxml", "Lista zamówieñ do sal");
 	}
 
 	public class ProduktZamowienia {
 
-		private int nrSali;
+		private Sala sala;
 		private String nazwa;
 		private int ilosc;
 		private CheckBox zaznaczonyProdukt;
 
 		@Override
 		public String toString() {
-			return "ProduktZamowienia{" + "nrSali=" + nrSali + ", nazwa=" + nazwa + ", ilosc=" + ilosc
+			return "ProduktZamowienia{" + "nrSali=" + sala + ", nazwa=" + nazwa + ", ilosc=" + ilosc
 					+ ", zaznaczonyProdukt=" + zaznaczonyProdukt + '}';
 		}
 
 		@Override
 		public int hashCode() {
 			int hash = 5;
-			hash = 59 * hash + this.nrSali;
 			hash = 59 * hash + (this.nazwa != null ? this.nazwa.hashCode() : 0);
 			hash = 59 * hash + this.ilosc;
 			return hash;
@@ -199,7 +205,7 @@ public class NoweZamowienieController implements Initializable {
 				return false;
 			}
 			final ProduktZamowienia other = (ProduktZamowienia) obj;
-			if (this.nrSali != other.nrSali) {
+			if (this.sala != other.sala) {
 				return false;
 			}
 			if (this.ilosc != other.ilosc) {
@@ -215,12 +221,12 @@ public class NoweZamowienieController implements Initializable {
 			return true;
 		}
 
-		public int getNrSali() {
-			return nrSali;
+		public Sala getNrSali() {
+			return sala;
 		}
 
-		public void setNrSali(int nrSali) {
-			this.nrSali = nrSali;
+		public void setNrSali(Sala nrSali) {
+			this.sala = nrSali;
 		}
 
 		public String getNazwa() {
@@ -247,8 +253,8 @@ public class NoweZamowienieController implements Initializable {
 			this.zaznaczonyProdukt = zaznaczonyProdukt;
 		}
 
-		public ProduktZamowienia(int nrSali, String nazwa, int ilosc, CheckBox zaznaczonyProdukt) {
-			this.nrSali = nrSali;
+		public ProduktZamowienia(Sala sala, String nazwa, int ilosc, CheckBox zaznaczonyProdukt) {
+			this.sala = sala;
 			this.nazwa = nazwa;
 			this.ilosc = ilosc;
 			this.zaznaczonyProdukt = zaznaczonyProdukt;

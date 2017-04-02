@@ -1,4 +1,3 @@
-
 package Controller;
 
 import java.io.IOException;
@@ -25,16 +24,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import model.Pielegniarka;
 import model.Produkt_Zamowienia;
 import model.Zamowienia;
 import model.repository.impl.KontoRepositoryImpl;
 import model.repository.impl.ZamowienieImpl;
 
 public class ListaZamowienController implements Initializable {
-	
-	public String login="";
-	public String haslo="";
-	
+
+	Pielegniarka pielegniarka = null;
+
 	@FXML
 	public TableView<PozycjaZamowienia> tabelaZamowien;
 	@FXML
@@ -73,7 +72,7 @@ public class ListaZamowienController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		if (kontoRepositoryImpl.zwrocenieTypuKonta(login, haslo) == 1) {
+		if (pielegniarka == null) {
 			tabelaZamowien.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent mouseEvent) {
@@ -82,7 +81,8 @@ public class ListaZamowienController implements Initializable {
 							try {
 								zamowieniAdministratora = tabelaZamowien.getSelectionModel().getSelectedItem();
 								System.out.println(zamowieniAdministratora);
-								((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
+								// ((Node)
+								// (mouseEvent.getSource())).getScene().getWindow().hide();
 								kontoRepositoryImpl.otwarcieNowejScenyZAdresu("/fxml/ZatwierdzenieZamowienia.fxml",
 										"Tworzenie nowego zamówienia");
 							} catch (IOException ex) {
@@ -99,7 +99,10 @@ public class ListaZamowienController implements Initializable {
 		for (Zamowienia zamowienie : pobranaListaZamowienZbazyDanych) {
 			PozycjaZamowienia listaZamowien = new PozycjaZamowienia(zamowienie.getID(),
 					zamowienie.getSalaNr_sali().getNumer_sali(), zamowienie.getData_zamowienia(),
-					zamowienie.getGodzina(), "Pani Basia", "Oczekuje na realizacje", new CheckBox());
+					zamowienie.getGodzina(),
+					zamowienie.getPielegniarka().getOsoba().getImie() + " "
+							+ zamowienie.getPielegniarka().getOsoba().getNazwisko(),
+					"Oczekuje na realizacje", new CheckBox());
 			Object produkt = zamowienie.getProdukt_Zamowienia();
 
 			listaZamowienDoWyswietlenia.add(listaZamowien);
@@ -107,13 +110,20 @@ public class ListaZamowienController implements Initializable {
 
 		kolumnaZaznaczZamowienie
 				.setCellValueFactory(new PropertyValueFactory<PozycjaZamowienia, Boolean>("zaznaczonyZamowienie"));
+		kolumnaZaznaczZamowienie.setStyle("-fx-alignment: CENTER;");
 		kolumnaNumerSali.setCellValueFactory(new PropertyValueFactory<PozycjaZamowienia, Integer>("nrSali"));
+		kolumnaNumerSali.setStyle("-fx-alignment: CENTER;");
 
 		kolumnaIdZamowienia.setCellValueFactory(new PropertyValueFactory<PozycjaZamowienia, Integer>("idZamowienia"));
+		kolumnaIdZamowienia.setStyle("-fx-alignment: CENTER;");
 		kolumnaDataZamowienia.setCellValueFactory(new PropertyValueFactory<PozycjaZamowienia, Date>("dataZamowienia"));
+		kolumnaDataZamowienia.setStyle("-fx-alignment: CENTER;");
 		kolumnaGodzina.setCellValueFactory(new PropertyValueFactory<PozycjaZamowienia, Time>("godzinaZamowienia"));
+		kolumnaGodzina.setStyle("-fx-alignment: CENTER;");
 		kolumnaZleceniodawca.setCellValueFactory(new PropertyValueFactory<PozycjaZamowienia, String>("Zleceniodawca"));
+		kolumnaZleceniodawca.setStyle("-fx-alignment: CENTER;");
 		kolumnaStatus.setCellValueFactory(new PropertyValueFactory<PozycjaZamowienia, String>("Status"));
+		kolumnaStatus.setStyle("-fx-alignment: CENTER;");
 		tabelaZamowien.setItems(listaZamowienDoWyswietlenia);
 
 	}
@@ -146,7 +156,7 @@ public class ListaZamowienController implements Initializable {
 
 	@FXML
 	private void utworzNoweZamowienie(ActionEvent event) throws IOException {
-		((Node) (event.getSource())).getScene().getWindow().hide();
+		// ((Node) (event.getSource())).getScene().getWindow().hide();
 		kontoRepositoryImpl.otwarcieNowejScenyZAdresu("/fxml/NoweZamowienie.fxml", "Tworzenie nowego zamówienia");
 	}
 

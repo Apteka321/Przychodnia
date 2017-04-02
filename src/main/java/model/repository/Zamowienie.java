@@ -11,6 +11,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import model.Pielegniarka;
 import model.Produkt_Zamowienia;
+import model.Sala;
 import model.Zamowienia;
 
 
@@ -28,5 +29,6 @@ public interface Zamowienie {
     public List<Produkt_Zamowienia> pobierzProduktZamowienia(Integer idZamowienia);
     public String usunZaznaczoneZamowienie(List<Produkt_Zamowienia> listaProduktowZamowieniawedlugId);
     public String zapiszEdytowaneZamowienie(ObservableList<ZatwierdzenieZamowienia> listaProduktowDoWyswietleni);
+    public List<Sala> pobierzListeSal();
 
 }
