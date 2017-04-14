@@ -9,8 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.management.Query;
-
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.jfoenix.controls.JFXPasswordField;
@@ -51,10 +50,7 @@ public class KontoRepositoryImpl implements KontoRepository {
 		if (file.isFile()) {
 			Scanner in = new Scanner(file);
 			zdanie = in.nextLine();
-		} else {
-			PrintWriter zapis = new PrintWriter(adresDoPliku);
-
-		}
+		} 
 		return zdanie;
 	}
 
@@ -170,15 +166,15 @@ public class KontoRepositoryImpl implements KontoRepository {
 		List<Pielegniarka> listaPielegniarek = new ArrayList<Pielegniarka>();
 		String hql = "FROM Pielegniarka";
 
-		try {
+		//try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			Query query = (Query) session.createQuery(hql);
 			listaPielegniarek.addAll(((org.hibernate.Query) query).list());
 
 
-		} catch (Exception e) {
+/*		} catch (Exception e) {
 			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy pielegniarek!");
-		}
+		}*/
 		// sortowanie listy
 		if (listaPielegniarek.size() > 0) {
 			listaPielegniarek.sort(new Comparator<Pielegniarka>() {
@@ -221,9 +217,9 @@ public class KontoRepositoryImpl implements KontoRepository {
 
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
-			Query query = (Query) session.createQuery(hql);
-			listaRecepcjonistek.addAll(((org.hibernate.Query) query).list());
-		
+			Query query = session.createQuery(hql);
+			listaRecepcjonistek.addAll(query.list());
+			session.close();
 
 		} catch (Exception e) {
 			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy recepcjonistek!");
@@ -239,6 +235,7 @@ public class KontoRepositoryImpl implements KontoRepository {
 		}
 		return listaRecepcjonistek;
 	}
+
 	
 
 }

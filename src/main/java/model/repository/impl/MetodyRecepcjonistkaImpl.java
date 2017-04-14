@@ -18,6 +18,7 @@ import java.util.StringTokenizer;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.annotations.Where;
 import org.hibernate.dialect.Ingres10Dialect;
 import org.hibernate.loader.plan.build.internal.returns.AbstractExpandingFetchSource;
@@ -26,7 +27,10 @@ import org.omg.CORBA.LongHolder;
 import com.jfoenix.controls.JFXDatePicker;
 
 import Controller.ModyfikowanieZapranowanejWizytyController.wiyztaOsoba;
+import Controller.ObslugaPlatnosciController.WizytaPlatnosc;
 import View.Komunikaty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Tab;
@@ -39,9 +43,12 @@ import model.Leki_Recepta;
 import model.Lista_zabiegow;
 import model.Osoba;
 import model.Pacjent;
+import model.Pielegniarka;
+import model.Platnosc;
 import model.Recepcjonistka;
 import model.Specjalizacja;
 import model.Wizyta;
+import model.Zabieg;
 import model.repository.MetodyRecepcjonistra;
 
 public class MetodyRecepcjonistkaImpl implements MetodyRecepcjonistra {
@@ -150,7 +157,7 @@ public class MetodyRecepcjonistkaImpl implements MetodyRecepcjonistra {
 		String idRecepcjonistki = "FROM Recepcjonistka WHERE ID = " + 1;
 		Query query3 = session.createQuery(idRecepcjonistki);
 		Recepcjonistka recepcjonistka = (Recepcjonistka) query3.list().get(0);
-
+		
 		session.beginTransaction();
 		Wizyta wizyta = new Wizyta();
 		int ubezpieczenie;
@@ -172,7 +179,7 @@ public class MetodyRecepcjonistkaImpl implements MetodyRecepcjonistra {
 		session.save(wizyta);
 		session.getTransaction().commit();
 
-		System.out.println(osoba);
+
 
 		session.close();
 
@@ -204,5 +211,69 @@ public class MetodyRecepcjonistkaImpl implements MetodyRecepcjonistra {
 		session.close();
 
 	}
+	
+	public List<Pacjent> wypiszListePacjentow() {
+		List<Pacjent> listaPacjentow = new ArrayList<Pacjent>();
+		String hql = "FROM Pacjent";
+
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			listaPacjentow.addAll(query.list());
+			session.close();
+
+		} catch (Exception e) {
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na Pobraæ listy Lekarzy!");
+		}
+
+		return listaPacjentow;
+	}
+
+	public void aktualizujPacjenta(Pacjent pacjent) {
+		try {
+			Session session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			session.update(pacjent.getClass().getSimpleName(), pacjent);
+			transaction.commit();
+			session.close();
+
+		} catch (
+
+		Exception e) {
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Nie mo¿na zaktualizowaæ pracownika!");
+		}
+		
+	}
+
+	public void dokonajPlatnosci(Integer idWizyty, Recepcjonistka recepcjonistka, BigDecimal kwota, Date dataPlatnosci) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.getTransaction().begin();
+
+		String aktualizacjaWizyty = "FROM Wizyta WHERE ID =" + idWizyty;
+		Query query2 = session.createQuery(aktualizacjaWizyty);
+		Wizyta wizyta = (Wizyta) query2.list().get(0);
+		wizyta = (Wizyta) session.get(Wizyta.class, wizyta.getID());
+		wizyta.setStatus_wizyty("Zaplacono");
+		session.update(wizyta);
+		
+		
+	
+		Platnosc platnosc = new Platnosc();
+		platnosc.setData_platnosci(dataPlatnosci);
+		platnosc.setID_wizyty(wizyta);
+		platnosc.setKwota(kwota);
+		platnosc.setRecepcjonistka(recepcjonistka);
+		platnosc.setTytul_platnosci("P³atnoœæ za wizyte");
+		session.save(platnosc);
+		session.getTransaction().commit();
+		session.close();
+		
+		
+	}
+
+
+
+
+	
 
 }

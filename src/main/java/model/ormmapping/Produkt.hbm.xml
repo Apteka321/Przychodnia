@@ -12,9 +12,11 @@ License Type: Academic
 		</id>
 		<property name="nazwa" column="Nazwa" type="string" length="255" not-null="true" lazy="false"/>
 		<property name="cena" column="Cena" type="big_decimal" precision="10" scale="2" not-null="true" lazy="false"/>
-		<set name="produkt_Zamowienia" lazy="true" cascade="save-update,lock" inverse="true">
+		<property name="ilosc" column="Ilosc" type="integer" length="10" not-null="true" lazy="false"/>
+		<set name="zamowienia" table="Produkt_Zamowienia" lazy="true" cascade="save-update,lock">
 			<key column="ProduktID" not-null="true"/>
-			<one-to-many class="model.Produkt_Zamowienia"/>
+			<many-to-many column="ZamowieniaID" class="model.Zamowienia">
+			</many-to-many>
 		</set>
 	</class>
 </hibernate-mapping>

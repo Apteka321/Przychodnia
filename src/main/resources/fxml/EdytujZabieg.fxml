@@ -25,17 +25,12 @@
      
 <JFXButton layoutX="211.0" layoutY="119.0" onAction="#wybranieOpcji" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Wybierz" textFill="WHITE" />
 
-<JFXButton layoutX="150.0" layoutY="296.0" onAction="#edytujZabieg" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Edytuj" textFill="WHITE">
+<JFXButton layoutX="121.0" layoutY="296.0" onAction="#edytujZabieg" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Edytuj" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </JFXButton>
-<JFXButton layoutX="88.0" layoutY="296.0" onAction="#usunZabieg" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Usuń" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="14.0" layoutY="296.0" onAction="#wstecz" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Anuluj" textFill="WHITE">
+<JFXButton layoutX="62.0" layoutY="296.0" onAction="#usunZabieg" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Usuń" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -49,7 +44,7 @@
          </font>
       </Label>
       <Separator layoutX="-1.0" layoutY="80.0" prefHeight="6.0" prefWidth="300.0" />
-      <JFXButton layoutX="222.0" layoutY="296.0" onAction="#dodajZabieg" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Dodaj" textFill="WHITE">
+      <JFXButton layoutX="184.0" layoutY="296.0" onAction="#dodajZabieg" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Dodaj" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

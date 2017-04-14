@@ -72,13 +72,11 @@ public class Pielegniarka implements Pracownik {
 		return String.valueOf(getID());
 	}
 
-	@Override
 	public void setOsoba(Osoba value) {
 		this.setAdres(value);
 
 	}
 
-	@Override
 	public Osoba getOsoba() {
 		return this.getAdres();
 	}

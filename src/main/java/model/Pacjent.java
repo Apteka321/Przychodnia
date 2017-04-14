@@ -2,7 +2,12 @@ package model;
 public class Pacjent {
 	public Pacjent() {
 	}
-	
+	public Pacjent(String PESEL,String imie,String nazwisko){
+		this.PESEL = PESEL;
+		this.imie=imie;
+		this.nazwisko=nazwisko;
+		
+	}
 	private String PESEL;
 	
 	private Konto konto;
@@ -58,10 +63,7 @@ public class Pacjent {
 	
 	private String haslo;
 	
-	public String toString() {
-		return String.valueOf(getPESEL());
-	}
-	
+
 	private boolean _saved = false;
 	
 	public void onSave() {

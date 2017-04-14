@@ -86,13 +86,7 @@ public class EdytujZabiegController {
     	tabelaZabiegow.getItems().addAll(metodyAdministratoraImpl.wypiszNazweZabiegu());
     }
 
-    @FXML
-    void wstecz(ActionEvent event) throws IOException {
     
-    	((Node) (event.getSource())).getScene().getWindow().hide();
-    	kontoRepositoryImpl.otwarcieNowejScenyZAdresu("/fxml/Admin.fxml","Administrator");
-
-    }
     @FXML
     void dodajZabieg(ActionEvent event) {
     	MetodyAdministratoraImpl metodyAdministratoraImpl = new MetodyAdministratoraImpl();

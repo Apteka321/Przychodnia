@@ -87,6 +87,43 @@ public class ModyfikowanieZapranowanejWizytyController implements Initializable 
 
 	MetodyRecepcjonistkaImpl metodyRecepcjonistkaImpl = new MetodyRecepcjonistkaImpl();
 
+	// Metoda przeszukuje tabele z pacjentami
+	@FXML
+	void metodaSzukaj(KeyEvent event) {
+		ObservableList<wiyztaOsoba> znalezieniPacjenci = FXCollections.observableArrayList();
+		listaWizyt.clear();
+		listaWizyt.addAll(wszyscyPacjenciX);
+		String wpisanaFraza = szukaj.getText();
+
+		String[] tablicaFraz = wpisanaFraza.split(" ");
+		int ileSpacji = wpisanaFraza.length() - wpisanaFraza.replace(" ", "").length();
+		System.out.println(ileSpacji);
+		System.out.println("\n Szukana Fraza:" + wpisanaFraza);
+
+		if (wpisanaFraza.length() != 0) {
+
+			for (wiyztaOsoba pacjentOsoba : listaWizyt) {
+
+				boolean flaga = true;
+				for (String string : tablicaFraz) {
+					String danePacjenta = pacjentOsoba.getImie() + " " + pacjentOsoba.getNazwisko() + " "
+							+ pacjentOsoba.getPesel();
+					if (!danePacjenta.toUpperCase().contains(string.toUpperCase())) {
+						flaga = false;
+					}
+				}
+				if (flaga) {
+					znalezieniPacjenci.add(pacjentOsoba);
+				}
+			}
+			listaWizyt.clear();
+			listaWizyt.addAll(znalezieniPacjenci);
+		} else {
+			listaWizyt.clear();
+			listaWizyt.addAll(wszyscyPacjenciX);
+		}
+	}
+
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		kolumnaID.setCellValueFactory(new PropertyValueFactory<wiyztaOsoba, Integer>("id"));
@@ -122,7 +159,8 @@ public class ModyfikowanieZapranowanejWizytyController implements Initializable 
 	public static LocalTime toLocalTime(java.sql.Time time) {
 		return time.toLocalTime();
 	}
-//po klikniencciu na ktorys wiersz..
+
+	// po klikniencciu na ktorys wiersz..
 	@FXML
 	void klikniecieNaTabele(MouseEvent event) {
 
@@ -132,7 +170,8 @@ public class ModyfikowanieZapranowanejWizytyController implements Initializable 
 		peselPoKliknieciu = listaPacjentow.getSelectionModel().getSelectedItem().getPesel();
 
 	}
-//aktualizuje date i czas wizyty
+
+	// aktualizuje date i czas wizyty
 	@FXML
 	void aktualizuj(ActionEvent event) {
 		try {
@@ -169,42 +208,6 @@ public class ModyfikowanieZapranowanejWizytyController implements Initializable 
 			Komunikaty.wyswietlOstrzezenie("Aktualizacja", "Wyst¹pi³ b³¹d w czasie aktyalizacji");
 		}
 
-	}
-//Metoda przeszukuje tabele z pacjentami
-	@FXML
-	void metodaSzukaj(KeyEvent event) {
-		ObservableList<wiyztaOsoba> znalezieniPacjenci = FXCollections.observableArrayList();
-		listaWizyt.clear();
-		listaWizyt.addAll(wszyscyPacjenciX);
-		String wpisanaFraza = szukaj.getText();
-
-		String[] tablicaFraz = wpisanaFraza.split(" ");
-		int ileSpacji = wpisanaFraza.length() - wpisanaFraza.replace(" ", "").length();
-		System.out.println(ileSpacji);
-		System.out.println("\n Szukana Fraza:" + wpisanaFraza);
-
-		if (wpisanaFraza.length() != 0) {
-
-			for (wiyztaOsoba pacjentOsoba : listaWizyt) {
-
-				boolean flaga = true;
-				for (String string : tablicaFraz) {
-					String danePacjenta = pacjentOsoba.getImie() + " " + pacjentOsoba.getNazwisko() + " "
-							+ pacjentOsoba.getPesel();
-					if (!danePacjenta.toUpperCase().contains(string.toUpperCase())) {
-						flaga = false;
-					}
-				}
-				if (flaga) {
-					znalezieniPacjenci.add(pacjentOsoba);
-				}
-			}
-			listaWizyt.clear();
-			listaWizyt.addAll(znalezieniPacjenci);
-		} else {
-			listaWizyt.clear();
-			listaWizyt.addAll(wszyscyPacjenciX);
-		}
 	}
 
 	@FXML

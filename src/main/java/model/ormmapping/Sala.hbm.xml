@@ -14,10 +14,7 @@
 			<key column="SalaNr_sali" not-null="true" />
 			<one-to-many class="model.Zamowienia" />
 		</set>
-		<set name="plan_dzienny" lazy="true" cascade="save-update,lock"
-			inverse="true">
-			<key column="SalaNumer_sali" not-null="true" />
-			<one-to-many class="model.Plan_dzienny" />
-		</set>
+		<one-to-one name="plan_dzienny" class="model.Plan_dzienny"
+			cascade="save-update,lock" property-ref="salaNr_sali" lazy="proxy" />
 	</class>
 </hibernate-mapping>

@@ -121,11 +121,9 @@ public class RejestracjaPacjentaNaWizyteController implements Initializable {
 					if (!danePacjenta.toUpperCase().contains(string.toUpperCase())) {
 						flaga = false;
 					}
-
 				}
 				if (flaga) {
 					znalezieniPacjenci.add(pacjentOsoba);
-					System.out.println(pacjentOsoba.getImie());
 				}
 			}
 			listaPacjentow.clear();
@@ -191,11 +189,6 @@ public class RejestracjaPacjentaNaWizyteController implements Initializable {
 
 	}
 
-	@FXML
-	void rejestracjaPacjenta(ActionEvent event) throws IOException {
-
-		kontoRepositoryImpl.otwarcieNowejScenyZAdresu("/fxml/rejestracjaPacjenta.fxml", "Logowanie");
-	}
 
 	// klasa pomocnicza przechowuje elemeny z klasy pacjent i osoba.
 	public class pacjentOsoba {

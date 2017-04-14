@@ -5,16 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.criteria.From;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import Controller.EdytujSpecjalizacjeController.wyborSpecjalziacji;
 import View.Komunikaty;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import model.HibernateUtil;
 import model.Konto;
+import model.Lekarz;
 import model.Lista_zabiegow;
 import model.Osoba;
 import model.Pacjent;
@@ -45,7 +49,6 @@ public class MetodyAdministratoraImpl implements MetodyAdministratora {
 			Komunikaty.wyswietlOstrzezenie("Specjalizacja", "Wyst¹pi³ problem z dodaniem speecjalizacji.");
 		}
 		session.close();
-		
 
 	}
 
@@ -55,12 +58,12 @@ public class MetodyAdministratoraImpl implements MetodyAdministratora {
 	 */
 
 	public void dodajZabieg(String nazwaZabiegu, BigDecimal cenazZaZabieg) {
-		
+
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Lista_zabiegow lista_zabiegow = new Lista_zabiegow();
 		try {
-			
+
 			lista_zabiegow.setNazwa(nazwaZabiegu);
 			lista_zabiegow.setCena(cenazZaZabieg);
 			session.save(lista_zabiegow);
@@ -168,12 +171,13 @@ public class MetodyAdministratoraImpl implements MetodyAdministratora {
 		return specjalizacja;
 
 	}
-/*
- * Metoda przyjmuje jako argumenty nazwe specjalizacji, cene, czas oraz tablice specjalizacji.
- * tablicaSpecjalizacji przechowuje nazyw specajlziacji do edycji.
- * 
- */
-	
+	/*
+	 * Metoda przyjmuje jako argumenty nazwe specjalizacji, cene, czas oraz
+	 * tablice specjalizacji. tablicaSpecjalizacji przechowuje nazyw
+	 * specajlziacji do edycji.
+	 * 
+	 */
+
 	public void edycjaSpecjalizacji(String nazwaSpecjalizacji, BigDecimal cena, int czas,
 			ChoiceBox<String> tabelaSpecjalizacji) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -192,17 +196,17 @@ public class MetodyAdministratoraImpl implements MetodyAdministratora {
 		if (result == 0) {
 			Komunikaty.wyswietlOstrzezenie("Specjalizcja", "Specjazlicja o takiej nazwie nie istnieje");
 		} else {
-			
+
 			Komunikaty.wyswietlInformacje("Specjalizcja", "Pomyœlnie zaktualizowano specjalizacje");
 		}
 		session.getTransaction().commit();
 		session.close();
 	}
-	
-/*
- * Usuwa wybran¹ z listy specjazlizacje.
- *  
- */
+
+	/*
+	 * Usuwa wybran¹ z listy specjazlizacje.
+	 * 
+	 */
 
 	public void usuwanieSpecjalizacji(ChoiceBox<String> tabelaSpecjalizacji) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -227,12 +231,13 @@ public class MetodyAdministratoraImpl implements MetodyAdministratora {
 	public String wybranegoSpecjalizacjiDoEdycji(ChoiceBox<String> tabelaSpecjalizacji) {
 		return tabelaSpecjalizacji.getValue();
 	}
-/*
- * Dodaj modyfikuj sale
- * 
- */
+
+	/*
+	 * Dodaj modyfikuj sale
+	 * 
+	 */
 	public void DodajSale(int numerSali, String opisSali) {
-	
+
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		Sala sala = new Sala();
@@ -243,21 +248,21 @@ public class MetodyAdministratoraImpl implements MetodyAdministratora {
 			session.getTransaction().commit();
 			Komunikaty.wyswietlInformacje("Sukces", "Dodano sale");
 		} catch (Exception e) {
-			Komunikaty.wyswietlOstrzezenie("B³¹d", "Sala nie mo¿e zostaæ dodana" );
+			Komunikaty.wyswietlOstrzezenie("B³¹d", "Sala nie mo¿e zostaæ dodana");
 		}
 		session.close();
-	
+
 	}
 
 	public List<Integer> wypiszWszystkieNazwySal() {
-	
+
 		final List<Integer> numerSali = new ArrayList<Integer>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Query query = session.createQuery("from Sala");
 		List<Sala> list = query.list();
 		for (Sala typ : list) {
 			numerSali.add(typ.getNumer_sali());
-		
+
 		}
 		session.close();
 		return numerSali;
@@ -268,9 +273,8 @@ public class MetodyAdministratoraImpl implements MetodyAdministratora {
 
 		session.getTransaction().begin();
 
-		Query query = session
-				.createSQLQuery("update Sala set numer_sali = :numerSali, sala_dla = :opisSali"
-						+ " where numer_sali = :numerWybranejSali ");
+		Query query = session.createSQLQuery("update Sala set numer_sali = :numerSali, sala_dla = :opisSali"
+				+ " where numer_sali = :numerWybranejSali ");
 
 		query.setParameter("numerSali", numerSali);
 		query.setParameter("opisSali", opisSali);
@@ -278,13 +282,13 @@ public class MetodyAdministratoraImpl implements MetodyAdministratora {
 		int result = query.executeUpdate();
 		if (result == 0) {
 			Komunikaty.wyswietlOstrzezenie("B³¹d", "ala o takim numerze nie istnieje");
-			
+
 		} else {
 			Komunikaty.wyswietlInformacje("Sukces", "Zaktualizowano sale");
 		}
 		session.close();
 		session.getTransaction().commit();
-		
+
 	}
 
 	public Integer wybranegoSaliDoEdycji(ChoiceBox<Integer> listaSal) {
@@ -292,7 +296,7 @@ public class MetodyAdministratoraImpl implements MetodyAdministratora {
 	}
 
 	public void usunSale(ChoiceBox<Integer> listaSal) {
-		
+
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.getTransaction().begin();
 		Query query = session.createSQLQuery("Delete from Sala where numer_sali = :numerSali");
@@ -300,15 +304,53 @@ public class MetodyAdministratoraImpl implements MetodyAdministratora {
 		int result = query.executeUpdate();
 		if (result == 0) {
 			Komunikaty.wyswietlOstrzezenie("B³¹d", "Sala o takim numerze nie istnieje");
-			
+
 		} else {
 			Komunikaty.wyswietlInformacje("Sukces", "Sala zosta³a usuniêta");
 		}
-		session.close();
 		session.getTransaction().commit();
+		session.close();
+
 	}
 
-	
-	
+	public List<String> wypiszLekarz() {
+		final List<String> nazwaLekarzy = new ArrayList<String>();
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Query query = session.createQuery("from Lekarz");
+		List<Lekarz> list = query.list();
+		for (Lekarz typ : list) {
+			nazwaLekarzy.add(typ.getOsoba().getImie() + " " + typ.getOsoba().getNazwisko());
+
+		}
+		session.close();
+		return nazwaLekarzy;
+	}
+
+	public void dodajSpecjalizacje(List<wyborSpecjalziacji> nawaSpecjalizacji, String nazwaLekarza) {
+		String[] parts = nazwaLekarza.split(" ");
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.getTransaction().begin();
+		Query zapytanieOLekarza = session
+				.createQuery("from Osoba where imie = :imieLekarza and nazwisko = :nazwiskoLekarza");
+		zapytanieOLekarza.setParameter("imieLekarza", parts[0]);
+		zapytanieOLekarza.setParameter("nazwiskoLekarza", parts[1]);
+		Osoba osoba = (Osoba) zapytanieOLekarza.list().get(0);
+		System.out.println(osoba.getLekarz().getID());
+		Query zapytanieOIdLekarza = session.createQuery("from Lekarz where ID = :idLekarza");
+		zapytanieOIdLekarza.setParameter("idLekarza", osoba.getLekarz().getID());
+		Lekarz lekarz = (Lekarz) zapytanieOIdLekarza.list().get(0);
+
+
+		for (wyborSpecjalziacji wSpecjalziacji : nawaSpecjalizacji) {
+			Query query = session.createQuery("from Specjalizacja where nazwa= :nazwaSpec");
+			query.setParameter("nazwaSpec", wSpecjalziacji.getNazwa());
+			Specjalizacja specjalizacja = (Specjalizacja) query.list().get(0);
+			lekarz.getSpecjalizacja().add(specjalizacja);
+
+		}
+		session.getTransaction().commit();
+		session.close();
+
+	}
 
 }

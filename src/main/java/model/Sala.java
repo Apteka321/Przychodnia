@@ -1,5 +1,4 @@
 package model;
-
 public class Sala {
 	public Sala() {
 	}
@@ -10,7 +9,7 @@ public class Sala {
 	
 	private java.util.Set zamowienia = new java.util.HashSet();
 	
-	private java.util.Set plan_dzienny = new java.util.HashSet();
+	private Plan_dzienny plan_dzienny;
 	
 	public void setNumer_sali(int value) {
 		this.numer_sali = value;
@@ -41,14 +40,13 @@ public class Sala {
 	}
 	
 	
-	public void setPlan_dzienny(java.util.Set value) {
+	public void setPlan_dzienny(Plan_dzienny value) {
 		this.plan_dzienny = value;
 	}
 	
-	public java.util.Set getPlan_dzienny() {
+	public Plan_dzienny getPlan_dzienny() {
 		return plan_dzienny;
 	}
-	
 	
 	public String toString() {
 		return String.valueOf(getNumer_sali());

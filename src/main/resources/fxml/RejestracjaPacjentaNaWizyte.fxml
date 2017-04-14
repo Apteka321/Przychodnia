@@ -23,10 +23,6 @@
          <font>
             <Font size="14.0" />
          </font></JFXButton>
-      <JFXButton layoutX="413.0" layoutY="396.0" ripplerFill="BLACK" style="-fx-background-color: #2598f3;" text="Anuluj" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font></JFXButton>
       <ChoiceBox fx:id="ubezpieczenie" layoutX="132.0" layoutY="79.0" prefWidth="150.0" style="-fx-background-color: #2598f3;">
          <effect>
             <DropShadow />
@@ -35,14 +31,6 @@
          <effect>
             <DropShadow />
          </effect></ChoiceBox>
-      <JFXButton layoutX="301.0" layoutY="22.0" onAction="#rejestracjaPacjenta" ripplerFill="BLACK" style="-fx-background-color: #2598f3;" text="Rejestracja Pacjenta" textFill="WHITE">
-         <effect>
-            <DropShadow />
-         </effect>
-         <font>
-            <Font size="14.0" />
-         </font>
-      </JFXButton>
       <TableView fx:id="tabelaPacjentow" layoutX="14.0" layoutY="119.0" onMouseClicked="#klikniecieNaTabele" prefHeight="263.0" prefWidth="617.0">
         <columns>
           <TableColumn fx:id="tabelaPESEL" prefWidth="191.0" text="PESEL" />

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Licensee: The State School of Higher Vocational Education in Jaroslaw 
-	License Type: Academic -->
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="model.Zamowienia" table="Zamowienia" lazy="false">
@@ -8,20 +10,16 @@
 			<generator class="native">
 			</generator>
 		</id>
-		<property name="data_zamowienia" column="Data_zamowienia"
-			type="date" not-null="true" lazy="false" />
-		<property name="godzina" column="Godzina" type="time" length="7"
-			not-null="true" lazy="false" />
-		<many-to-one name="pielegniarka" cascade="lock" column="PielegniarkaID"
-			class="model.Pielegniarka" not-null="true" lazy="proxy">
+		<property name="data_zamowienia" column="Data_zamowienia" type="date" not-null="true" lazy="false"/>
+		<property name="godzina" column="Godzina" type="time" length="7" not-null="true" lazy="false"/>
+		<many-to-one name="pielegniarka" cascade="lock" column="PielegniarkaID" class="model.Pielegniarka" not-null="true" lazy="proxy">
 		</many-to-one>
-		<many-to-one name="salaNr_sali" cascade="lock" column="SalaNr_sali"
-			class="model.Sala" not-null="true" lazy="proxy">
+		<many-to-one name="salaNr_sali" cascade="lock" column="SalaNr_sali" class="model.Sala" not-null="true" lazy="proxy">
 		</many-to-one>
-		<set name="produkt_Zamowienia" lazy="true" cascade="save-update,lock"
-			inverse="true">
-			<key column="ZamowieniaID" not-null="true" />
-			<one-to-many class="model.Produkt_Zamowienia" />
+		<set name="produkt" table="Produkt_Zamowienia" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="ZamowieniaID" not-null="true"/>
+			<many-to-many column="ProduktID" class="model.Produkt">
+			</many-to-many>
 		</set>
 	</class>
 </hibernate-mapping>

@@ -5,54 +5,79 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="312.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EdytujSpecjalizacjeController">
+<AnchorPane prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EdytujSpecjalizacjeController">
    <children>
-      <Label alignment="CENTER" layoutX="2.0" layoutY="14.0" prefHeight="53.0" prefWidth="300.0" text="Specjalziacja">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-      <Separator layoutY="66.0" prefHeight="1.0" prefWidth="300.0" />
-      <ChoiceBox fx:id="tabelaSpecjalizacji" layoutX="15.0" layoutY="75.0" prefWidth="150.0" style="-fx-background-color: #2d9dd2;" />
-      <JFXButton layoutX="204.0" layoutY="72.0" onAction="#wybierzSpecjalizacje" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Wybierz" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="15.0" layoutY="263.0" onAction="#wstecz" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Anuluj" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font></JFXButton>
-      <JFXButton layoutX="91.0" layoutY="263.0" onAction="#usunSpecjalizacje" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Usun" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font></JFXButton>
-      <JFXButton layoutX="162.0" layoutY="263.0" onAction="#edytujSpecjalizacje" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Edytuj" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font></JFXButton>
-     
-      <JFXTextField fx:id="cenaWizyty" focusColor="#2d9dd2" labelFloat="true" layoutX="11.0" layoutY="168.0" prefHeight="28.0" prefWidth="180.0" promptText="Cena wizyty">
-         <font>
-            <Font size="14.0" />
-         </font></JFXTextField>
-      <JFXTextField fx:id="czasEizyty" focusColor="#2d9dd2" labelFloat="true" layoutX="12.0" layoutY="217.0" promptText="Czas wizyty">
-         <font>
-            <Font size="14.0" />
-         </font></JFXTextField>
-      <JFXTextField fx:id="nazwaSpecjalizacji" focusColor="#2d9dd2" labelFloat="true" layoutX="13.0" layoutY="120.0" prefHeight="25.0" prefWidth="250.0" promptText="Nazwa specjalizacji">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </JFXTextField>
-      <Separator layoutY="253.0" prefHeight="3.0" prefWidth="302.0" />
-      <JFXButton layoutX="235.0" layoutY="263.0" onAction="#dodajSpecjalizacje" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Dodaj" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </JFXButton>
+      <Pane layoutX="10.0" layoutY="3.0" prefHeight="312.0" prefWidth="642.0">
+         <children>
+            <Label alignment="CENTER" layoutX="6.0" prefHeight="53.0" prefWidth="300.0" text="Specjalziacja">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Separator layoutX="306.0" layoutY="52.0" prefHeight="3.0" prefWidth="338.0" />
+            <TableView fx:id="tabelaDodajSpecjalizacej" layoutX="321.0" layoutY="98.0" prefHeight="163.0" prefWidth="317.0">
+              <columns>
+                <TableColumn fx:id="kolumnaPrzyciski" prefWidth="75.0" />
+                <TableColumn fx:id="kolumnaNazwaSpecjalizacji" prefWidth="236.0" text="Nazwa specjalizacji" />
+              </columns>
+            </TableView>
+            <ChoiceBox fx:id="listaLekarzy" layoutX="321.0" layoutY="61.0" prefWidth="150.0" style="-fx-background-color: #2d9dd2;" />
+            <ChoiceBox fx:id="tabelaSpecjalizacji" layoutX="8.0" layoutY="64.0" prefWidth="150.0" style="-fx-background-color: #2d9dd2;" />
+            <JFXButton layoutX="201.0" layoutY="62.0" onAction="#wybierzSpecjalizacje" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Wybierz" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="nazwaSpecjalizacji" focusColor="#2d9dd2" labelFloat="true" layoutX="33.0" layoutY="108.0" prefHeight="25.0" prefWidth="250.0" promptText="Nazwa specjalizacji">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="cenaWizyty" focusColor="#2d9dd2" labelFloat="true" layoutX="33.0" layoutY="156.0" prefHeight="28.0" prefWidth="180.0" promptText="Cena specjalizacji">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="czasEizyty" focusColor="#2d9dd2" labelFloat="true" layoutX="33.0" layoutY="207.0" promptText="Czas specjalizacji">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton layoutX="38.0" layoutY="270.0" onAction="#usunSpecjalizacje" prefHeight="30.0" prefWidth="70.0" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Usuń" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="115.0" layoutY="270.0" onAction="#edytujSpecjalizacje" prefHeight="30.0" prefWidth="70.0" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Edytuj" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="190.0" layoutY="270.0" onAction="#dodajSpecjalizacje" prefHeight="30.0" prefWidth="70.0" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Dodaj" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="538.0" layoutY="270.0" onAction="#dodajLekarzowiSpecjalizacje" prefHeight="30.0" prefWidth="70.0" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Dodaj" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="310.0" layoutY="8.0" text="Dodaj specjalizacje lekarzowi">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Separator layoutX="-7.0" layoutY="49.0" prefHeight="12.0" prefWidth="317.0" />
+      <Separator layoutX="10.0" layoutY="263.0" prefHeight="3.0" prefWidth="302.0" />
+      <Separator layoutX="310.0" layoutY="-3.0" orientation="VERTICAL" prefHeight="323.0" prefWidth="5.0" />
    </children>
 </AnchorPane>

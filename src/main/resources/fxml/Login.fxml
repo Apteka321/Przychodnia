@@ -15,17 +15,17 @@
             <Font size="34.0" />
          </font>
       </Label>
-      <JFXButton fx:id="buttonExample" layoutX="88.0" layoutY="196.0" onAction="#Login" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Zaloguj" textFill="WHITE">
+      <JFXButton fx:id="buttonExample" layoutX="88.0" layoutY="202.0" onAction="#Login" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Zaloguj" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font></JFXButton>
-      <JFXTextField fx:id="txtUsername" focusColor="#2d9dd2" labelFloat="true" layoutX="25.0" layoutY="61.0" prefHeight="29.0" prefWidth="195.0" promptText="Nazwa użytkownika">
+      <JFXTextField fx:id="txtUsername" focusColor="#2d9dd2" labelFloat="true" layoutX="25.0" layoutY="74.0" prefHeight="29.0" prefWidth="195.0" promptText="Nazwa użytkownika">
          <font>
             <Font size="15.0" />
          </font></JFXTextField>
-      <JFXCheckBox layoutX="23.0" layoutY="153.0" onAction="#pamietaj" text="Zapamietaj mnie" />
+      <JFXCheckBox layoutX="26.0" layoutY="162.0" onAction="#pamietaj" text="Zapamietaj mnie" />
       <Label fx:id="lblStatus" layoutX="25.0" layoutY="179.0" prefHeight="17.0" prefWidth="195.0" textFill="RED" />
-      <JFXPasswordField fx:id="txtPassword" focusColor="#2d9dd2" labelFloat="true" layoutX="25.0" layoutY="109.0" prefHeight="28.0" prefWidth="195.0" promptText="Hasło">
+      <JFXPasswordField fx:id="txtPassword" focusColor="#2d9dd2" labelFloat="true" layoutX="24.0" layoutY="123.0" prefHeight="28.0" prefWidth="195.0" promptText="Hasło">
          <font>
             <Font size="14.0" />
          </font></JFXPasswordField>
