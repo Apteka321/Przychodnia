@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="312.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EdytujSpecjalizacjeController">
+   <children>
+      <Label layoutX="2.0" layoutY="14.0" text="Edycja specjalizacji">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Separator layoutY="66.0" prefHeight="1.0" prefWidth="300.0" />
+      <ChoiceBox fx:id="tabelaSpecjalizacji" layoutX="15.0" layoutY="75.0" prefWidth="150.0" style="-fx-background-color: #2d9dd2;" />
+      <JFXButton layoutX="204.0" layoutY="72.0" onAction="#wybierzSpecjalizacje" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Wybierz" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="15.0" layoutY="263.0" onAction="#usunSpecjalizacje" prefHeight="30.0" prefWidth="121.0" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Usun" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <JFXButton layoutX="151.0" layoutY="263.0" onAction="#edytujSpecjalizacje" prefHeight="30.0" prefWidth="132.0" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Edytuj" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+     
+      <JFXTextField fx:id="cenaWizyty" focusColor="#2d9dd2" labelFloat="true" layoutX="11.0" layoutY="168.0" prefHeight="28.0" prefWidth="180.0" promptText="Cena wizyty">
+         <font>
+            <Font size="14.0" />
+         </font></JFXTextField>
+      <JFXTextField fx:id="czasEizyty" focusColor="#2d9dd2" labelFloat="true" layoutX="12.0" layoutY="217.0" promptText="Cena wizyty">
+         <font>
+            <Font size="14.0" />
+         </font></JFXTextField>
+      <JFXTextField fx:id="nazwaSpecjalizacji" focusColor="#2d9dd2" labelFloat="true" layoutX="13.0" layoutY="120.0" prefHeight="25.0" prefWidth="250.0" promptText="Nazwa specjalizacji">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <Separator layoutY="253.0" prefHeight="3.0" prefWidth="302.0" />
+   </children>
+</AnchorPane>
