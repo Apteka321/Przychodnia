@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Licensee: The State School of Higher Vocational Education in Jaroslaw 
+	License Type: Academic -->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Plan_pracy" table="Plan_pracy" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="umowa_od" column="Umowa_od" type="date"
+			not-null="true" lazy="false" />
+		<property name="wyplata" column="Wyplata" type="big_decimal"
+			precision="6" scale="2" not-null="true" lazy="false" />
+		<set name="wolne_od_pracy" lazy="true" cascade="save-update,lock"
+			inverse="true">
+			<key column="`Plan pracyID`" not-null="true" />
+			<one-to-many class="model.Wolne_od_pracy" />
+		</set>
+		<one-to-one name="lekarz" class="model.Lekarz" cascade="save-update,lock"
+			property-ref="plan_pracy" lazy="proxy" />
+		<one-to-one name="pielegniarka" class="model.Pielegniarka"
+			cascade="save-update,lock" property-ref="plan_pracy" lazy="proxy" />
+		<one-to-one name="recepcjonistka" class="model.Recepcjonistka"
+			cascade="save-update,lock" property-ref="plan_pracy" lazy="proxy" />
+		<set name="plan_dzienny" lazy="true" cascade="save-update,lock"
+			inverse="true">
+			<key column="Plan_pracyID" not-null="true" />
+			<one-to-many class="model.Plan_dzienny" />
+		</set>
+	</class>
+</hibernate-mapping>

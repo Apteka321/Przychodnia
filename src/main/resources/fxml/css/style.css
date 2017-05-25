@@ -1,0 +1,21 @@
+.table-view .column-header
+{
+    -fx-background-color: #2598f3;
+-fx-text-fill: white;
+-fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 2, 0.5, 1, 1);
+      -fx-alignment: center;
+}
+.tab-header-background{
+    -fx-background-color: #2598f3;
+
+}
+
+.table-view .label {
+   
+    -fx-text-fill: white;
+    -fx-alignment: center;
+}
+
+

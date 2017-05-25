@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="1097.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RaportyController">
+   <children>
+      <JFXTabPane minHeight="-Infinity" prefHeight="700.0" prefWidth="1093.0" stylesheets="@css/style.css" tabMaxHeight="200.0" tabMinHeight="50.0" tabMinWidth="200.0">
+         <tabs>
+            <Tab style="-fx-background-color: #2598f3;" text="Zyski i Straty">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="977.0">
+                     <children>
+                        <Pane layoutX="28.0" layoutY="41.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="666.0">
+                           <children>
+                              <TableView fx:id="tabelaPrzychodu" prefHeight="372.0" prefWidth="403.0" scaleShape="false">
+                                <columns>
+                                  <TableColumn fx:id="kolumnaMiesiac" prefWidth="83.0" text="Miesiąc" />
+                                    <TableColumn fx:id="kolumnaPrzychod" prefWidth="78.0" text="Przychod" />
+                                    <TableColumn fx:id="kolumnaKoszty" prefWidth="288.0" text="Koszty">
+                                       <columns>
+                                          <TableColumn fx:id="kolumnaZamowienia" prefWidth="83.0" text="Zamówienia" />
+                                          <TableColumn fx:id="kolumnaWynagrodzenia" prefWidth="98.0" text="Wynagodzenia" />
+                                          <TableColumn fx:id="kolumnaZW" prefWidth="68.0" text="Z+W" />
+                                       </columns>
+                                    </TableColumn>
+                                </columns>
+                              </TableView>
+                              <LineChart fx:id="wykresZyskowStrat" layoutX="424.0" layoutY="44.0" prefHeight="299.0" prefWidth="626.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </LineChart>
+                              <PieChart layoutX="373.0" layoutY="313.0" prefHeight="225.0" prefWidth="431.0" />
+                           </children>
+                        </Pane>
+                     </children></AnchorPane>
+              </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="LINE_CHART" size="14" />
+               </graphic>
+            </Tab>
+            <Tab style="-fx-background-color: #2598f3;" text="Wizyty">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="667.0" stylesheets="css/style.css">
+                     <children>
+                        <BarChart fx:id="wizytyBarChart" layoutX="385.0" layoutY="96.0" prefHeight="266.0" prefWidth="645.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                        <TableView fx:id="wizytyTabela" layoutX="36.0" layoutY="49.0" prefHeight="360.0" prefWidth="281.0">
+                          <columns>
+                            <TableColumn fx:id="wizytyTabelaMiesiacColun" prefWidth="128.0" text="Miesiąc" />
+                            <TableColumn fx:id="wizytyTabelaLiczbaColumn" prefWidth="183.0" text="Liczba wizyt" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+               </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="14" />
+               </graphic>
+            </Tab>
+            <Tab style="-fx-background-color: #2598f3;" text="Zamówienia">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="647.0">
+                     <children>
+                        <VBox layoutX="327.0" layoutY="125.0" prefHeight="313.0" prefWidth="151.0" spacing="20.0" />
+                        <PieChart fx:id="zamowieniaPieChart" layoutX="438.0" layoutY="67.0" prefHeight="354.0" prefWidth="500.0" />
+                        <TableView fx:id="zamowieniaTabela" layoutX="44.0" layoutY="74.0" prefHeight="309.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="zamowieniaKolumnaMiesiac" prefWidth="75.0" text="Miesiąc" />
+                            <TableColumn fx:id="zamowieniaIloscZamowien" prefWidth="124.0" text="Ilość Zamówień" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+              </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TASKS" size="14" />
+               </graphic>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</Pane>

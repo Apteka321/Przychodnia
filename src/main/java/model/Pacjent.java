@@ -31,7 +31,7 @@ public class Pacjent {
 		return konto;
 	}
 	
-	public void setOsoba(Osoba value) {
+            public void setOsoba(Osoba value) {
 		this.osoba = value;
 	}
 	

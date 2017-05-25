@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Specjalizacja" table="Specjalizacja" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="nazwa" column="Nazwa" type="string" length="100" not-null="true" lazy="false"/>
+		<property name="czas_wizyty" column="Czas_wizyty" type="integer" length="10" not-null="true" lazy="false"/>
+		<property name="koszt_wizyty" column="Koszt_wizyty" type="big_decimal" precision="10" scale="2" not-null="true" lazy="false"/>
+		<set name="ID_lekarza" table="Specjalizacja_lekarza" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`ID Specjalizacji`" not-null="true"/>
+			<many-to-many column="`ID lekarza`" class="model.Lekarz">
+			</many-to-many>
+		</set>
+		<set name="lekarz" table="Lekarz_Specjalizacja" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="SpecjalizacjaID" not-null="true"/>
+			<many-to-many column="LekarzID" class="model.Lekarz">
+			</many-to-many>
+		</set>
+		<set name="wizyta" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`ID Specjalizacji`" not-null="true"/>
+			<one-to-many class="model.Wizyta"/>
+		</set>
+	</class>
+</hibernate-mapping>

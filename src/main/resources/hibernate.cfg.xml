@@ -1,44 +1,48 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!--
-Licensee: The State School of Higher Vocational Education in Jaroslaw
-License Type: Academic
--->
-<!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
- "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC 
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-   	<!-- properties -->
-		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://adm.dev.pwste.edu.pl:3306/db0215</property>
+		<!-- properties -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.characterEncoding">utf-8</property>
+
+ 		<property name="connection.url">jdbc:mysql://localhost:3306/db0215</property>
+		<property name="connection.password"></property>
+		<property name="connection.username">root</property> 
+
+<!--		<property name="connection.url">jdbc:mysql://adm.dev.pwste.edu.pl:3306/db0215</property>
 		<property name="connection.username">s32149</property>
 		<property name="connection.password">marcinkiki</property>
-		<property name="hibernate.connection.provider_class">org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl</property>
-		<property name="show_sql">false</property>
+		-->
+
+		<property name="show_sql">true</property>
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
 		<!-- mapping files -->
-		<mapping resource="ormmapping/Godziny_pracy.hbm.xml" />
-		<mapping resource="ormmapping/Konto.hbm.xml" />
-		<mapping resource="ormmapping/Lekarz.hbm.xml" />
-		<mapping resource="ormmapping/Leki.hbm.xml" />
-		<mapping resource="ormmapping/Lista_zabiegow.hbm.xml" />
-		<mapping resource="ormmapping/Osoba.hbm.xml" />
-		<mapping resource="ormmapping/Pacjent.hbm.xml" />
-		<mapping resource="ormmapping/Pielegniarka.hbm.xml" />
-		<mapping resource="ormmapping/Plan_dzienny.hbm.xml" />
-		<mapping resource="ormmapping/Plan_pracy.hbm.xml" />
-		<mapping resource="ormmapping/Platnosc.hbm.xml" />
-		<mapping resource="ormmapping/Produkt.hbm.xml" />
-		<mapping resource="ormmapping/Recepcjonistka.hbm.xml" />
-		<mapping resource="ormmapping/Recepta.hbm.xml" />
-		<mapping resource="ormmapping/Sala.hbm.xml" />
-		<mapping resource="ormmapping/Skierowanie.hbm.xml" />
-		<mapping resource="ormmapping/Specjalizacja.hbm.xml" />
-		<mapping resource="ormmapping/Wizyta.hbm.xml" />
-		<mapping resource="ormmapping/Wolne_od_pracy.hbm.xml" />
-		<mapping resource="ormmapping/Zabieg.hbm.xml" />
-		<mapping resource="ormmapping/Zamowienia.hbm.xml" />
-		<mapping resource="ormmapping/Zwolnienie.hbm.xml" />
+		<mapping resource="model/ormmapping/Konto.hbm.xml" />
+		<mapping resource="model/ormmapping/Lekarz.hbm.xml" />
+		<mapping resource="model/ormmapping/Leki.hbm.xml" />
+		<mapping resource="model/ormmapping/Leki_Recepta.hbm.xml" />
+		<mapping resource="model/ormmapping/Lista_zabiegow.hbm.xml" />
+		<mapping resource="model/ormmapping/Osoba.hbm.xml" />
+		<mapping resource="model/ormmapping/Pacjent.hbm.xml" />
+		<mapping resource="model/ormmapping/Pielegniarka.hbm.xml" />
+		<mapping resource="model/ormmapping/Plan_dzienny.hbm.xml" />
+		<mapping resource="model/ormmapping/Plan_pracy.hbm.xml" />
+		<mapping resource="model/ormmapping/Platnosc.hbm.xml" />
+		<mapping resource="model/ormmapping/Produkt.hbm.xml" />
+		<mapping resource="model/ormmapping/Recepcjonistka.hbm.xml" />
+		<mapping resource="model/ormmapping/Recepta.hbm.xml" />
+		<mapping resource="model/ormmapping/Sala.hbm.xml" />
+		<mapping resource="model/ormmapping/Skierowanie.hbm.xml" />
+		<mapping resource="model/ormmapping/Specjalizacja.hbm.xml" />
+		<mapping resource="model/ormmapping/Wizyta.hbm.xml" />
+		<mapping resource="model/ormmapping/Wolne_od_pracy.hbm.xml" />
+		<mapping resource="model/ormmapping/Zabieg.hbm.xml" />
+		<mapping resource="model/ormmapping/Zamowienia.hbm.xml" />
+		<mapping resource="model/ormmapping/Zwolnienie.hbm.xml" />
+		<mapping resource="model/ormmapping/Produkt_Zamowienia.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

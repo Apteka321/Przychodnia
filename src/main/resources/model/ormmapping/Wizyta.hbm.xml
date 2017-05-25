@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Wizyta" table="Wizyta" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="data" column="Data" type="date" not-null="true" lazy="false"/>
+		<property name="godzina" column="Godzina" type="time" length="7" not-null="true" lazy="false"/>
+		<property name="objawy" column="Objawy" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="diagnoza" column="Diagnoza" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="czy_ubezpieczony" column="Czy_ubezpieczony" type="integer" length="1" not-null="true" lazy="false"/>
+		<property name="status_wizyty" column="Status_wizyty" type="string" length="20" not-null="true" lazy="false"/>
+		<many-to-one name="ID_Specjalizacji" cascade="lock" column="`ID Specjalizacji`" class="model.Specjalizacja" not-null="true" lazy="proxy">
+		</many-to-one>
+		<many-to-one name="PESEL_pacjenta" cascade="lock" column="`PESEL pacjenta`" class="model.Pacjent" not-null="true" lazy="proxy">
+		</many-to-one>
+		<many-to-one name="ID_lekarza" cascade="lock" column="`ID lekarza`" class="model.Lekarz" not-null="true" lazy="proxy">
+		</many-to-one>
+		<many-to-one name="recepcjonistka" cascade="lock" column="RecepcjonistkaId" class="model.Recepcjonistka" not-null="false" lazy="proxy">
+		</many-to-one>
+		<set name="skierowanie" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`ID wizyty`" not-null="true"/>
+			<one-to-many class="model.Skierowanie"/>
+		</set>
+		<one-to-one name="platnosc" class="model.Platnosc" cascade="save-update,lock" property-ref="ID_wizyty" lazy="proxy"/>
+		<one-to-one name="recepta1" class="model.Recepta" cascade="save-update,lock" property-ref="wizyta" lazy="proxy"/>
+		<set name="zwolnienie" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="WizytaID" not-null="true"/>
+			<one-to-many class="model.Zwolnienie"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="311.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.WystawienieSkierowaniaController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="311.0" prefWidth="510.0">
+         <children>
+            <Label contentDisplay="CENTER" text="Wystawianie Skierowania" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="420.0" minWidth="10.0" prefWidth="380.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="129.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Skierowanie do:">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label text="Skierowanie na:" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" prefHeight="127.0" prefWidth="290.0" text="Rozpoznanie:" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="skierowanieDoTextField" focusColor="#2d9dd2" prefHeight="25.0" prefWidth="263.0" style="-fx-border-color: #D3D3D3; -fx-border-radius: 1%;" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="skierowanieNaTextField" focusColor="#2d9dd2" style="-fx-border-color: #D3D3D3; -fx-border-radius: 1%;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextArea fx:id="rozpoznanieTextArea" focusColor="#2d9dd2" prefHeight="84.0" prefWidth="291.0" style="-fx-border-color: #D3D3D3; -fx-border-radius: 1%;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </GridPane>
+            <JFXButton onAction="#drukujSkierowanie" prefHeight="50.0" prefWidth="125.0" ripplerFill="WHITE" style="-fx-background-color: #2d9dd2;" text="Drukuj" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PRINT" glyphStyle="floppy-o" size="20" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</Pane>
