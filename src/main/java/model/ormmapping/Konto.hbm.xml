@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Konto" table="Konto" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="login" column="Login" unique="true" type="string" length="50" not-null="true" lazy="false"/>
+		<property name="haslo" column="Haslo" type="string" length="50" not-null="true" lazy="false"/>
+		<property name="typ_konta" column="Typ_konta" type="integer" length="11" not-null="true" lazy="false"/>
+		<one-to-one name="lekarz" class="model.Lekarz" cascade="save-update,lock" property-ref="konto" lazy="proxy"/>
+		<one-to-one name="recepcjonistka" class="model.Recepcjonistka" cascade="save-update,lock" property-ref="konto" lazy="proxy"/>
+		<one-to-one name="pacjent" class="model.Pacjent" cascade="save-update,lock" property-ref="konto" lazy="proxy"/>
+		<one-to-one name="pielegniarka" class="model.Pielegniarka" cascade="save-update,lock" property-ref="konto" lazy="proxy"/>
+	</class>
+</hibernate-mapping>

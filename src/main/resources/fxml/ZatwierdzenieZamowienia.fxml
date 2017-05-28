@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minWidth="315.0" prefHeight="547.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ZatwierdzenieZamowieniaController">
+  <children>
+    <TableView fx:id="listaProduktow" layoutY="108.0" prefHeight="422.0" prefWidth="687.0" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="108.0">
+      <columns>
+            <TableColumn fx:id="kolumnaZaznaczProdukt" maxWidth="5000.0" minWidth="10.0" prefWidth="77.0" text="Zaznacz" />
+            <TableColumn fx:id="kolumnaNazwaProduktu" maxWidth="458.0" minWidth="10.0" prefWidth="322.0" text="Nazwa produktu" />
+            <TableColumn fx:id="kolumnaIloscProduktu" maxWidth="391.0" minWidth="10.0" prefWidth="170.0" text="Ilość" />
+            <TableColumn fx:id="kolumnaCenaProduktu" maxWidth="391.0" minWidth="10.0" prefWidth="125.0" text="Cena" />
+      </columns>
+    </TableView>
+    <HBox id="HBox" alignment="CENTER" prefHeight="27.0" prefWidth="754.0" spacing="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <children>
+        <Label prefHeight="17.0" prefWidth="239.0" text="Lista zamawianych produktów">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+      </children>
+    </HBox>
+      <HBox layoutX="18.0" layoutY="75.0" spacing="10.0">
+         <children>
+      
+            <TextField fx:id="inputNazwaProduktu" prefHeight="25.0" prefWidth="206.0" promptText="Nazwa produktu" />
+            <TextField fx:id="inputIloscProduktu" prefHeight="25.0" prefWidth="68.0" promptText="Ilość" />
+            <JFXButton fx:id="usunZListyZamowienButton" alignment="CENTER" onAction="#usunZListyZamowien" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #C62828;" text="Usuń zaznaczone" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="MINUS" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="dodajDoListyZamowienButton" alignment="CENTER" onAction="#dodajDoListyZamowien" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: #2d9dd2#B71C1C;" text="Dodaj do listy" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="zapiszZamowienieButton" alignment="CENTER" onAction="#zapiszZamowienie" prefHeight="25.0" prefWidth="139.0" style="-fx-background-color: #64DD17;" text="Zapisz Zamówienie" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CHECK" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </HBox>
+      <Label fx:id="nrSaliLabel" layoutX="14.0" layoutY="45.0" textFill="RED">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="nazwaProduktuLabel" layoutX="114.0" layoutY="45.0" textFill="RED">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="iloscLabel" layoutX="228.0" layoutY="45.0" textFill="RED">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="39.0" text="Zamówienie nr.">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="labelNumerZamowienia" layoutX="126.0" layoutY="40.0" text="123">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="163.0" layoutY="39.0" text="Nr sali:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelNumerSali" layoutX="211.0" layoutY="40.0" text="2">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+  </children>
+</AnchorPane>

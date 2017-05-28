@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="664.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GabinetController">
+   <children>
+      <JFXTabPane minHeight="-Infinity" prefHeight="700.0" prefWidth="700.0" stylesheets="@css/style.css" tabMaxHeight="200.0" tabMinHeight="50.0" tabMinWidth="200.0">
+         <tabs>
+            <Tab style="-fx-background-color: #2598f3;" text="Karta Wizyty">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="685.0">
+                     <children>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="666.0">
+                           <children>
+                              <Label fx:id="imieLabel" layoutX="35.0" layoutY="27.0" text="Imie ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="nazwiskoLabel" layoutX="88.0" layoutY="27.0" text="Nazwisko">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="178.0" layoutY="29.0" text="Data wizyty:" />
+                              <Label fx:id="dataWizytyLabel" layoutX="263.0" layoutY="29.0" prefHeight="17.0" prefWidth="101.0" text="Data Wizyty" />
+                              <Label layoutX="343.0" layoutY="29.0" text="PESEL:" />
+                              <Label fx:id="peselLabel" layoutX="389.0" layoutY="29.0" text="NrPesel" />
+                              <TextArea fx:id="objawyArea" layoutX="14.0" layoutY="118.0" prefHeight="155.0" prefWidth="477.0" />
+                              <Label layoutX="14.0" layoutY="93.0" text="Objawy:" />
+                              <Separator layoutX="14.0" layoutY="48.0" prefHeight="22.0" prefWidth="583.0" />
+                              <Separator layoutX="2.0" layoutY="321.0" prefHeight="0.0" prefWidth="583.0" />
+                              <TextArea fx:id="wywiadArea" layoutX="14.0" layoutY="370.0" prefHeight="155.0" prefWidth="477.0" />
+                              <Label layoutX="14.0" layoutY="338.0" text="Wywiad" />
+                           </children>
+                        </Pane>
+                        <JFXButton fx:id="buttonZapiszWizyte" layoutX="55.0" layoutY="546.0" onAction="#zapiszWizyte" ripplerFill="WHITE" style="-fx-background-color: #64d035;" text="Zapisz Wizyte" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="CHECK" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="drukujRecepteButton" layoutX="190.0" layoutY="546.0" onAction="#drukujRecepte" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Drukuj Recepte" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="PASTE" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="drukujSkierowanieButton" layoutX="333.0" layoutY="546.0" onAction="#drukujSkierowanie" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Drukuj Skierowanie" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="PASTE" />
+                           </graphic>
+                        </JFXButton>
+                     </children></AnchorPane>
+              </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CLIPBOARD" size="14" />
+               </graphic>
+            </Tab>
+            <Tab style="-fx-background-color: #2598f3;" text="Dane Pacjenta">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="647.0">
+                     <children>
+                        <Label layoutX="251.0" layoutY="27.0" prefHeight="31.0" prefWidth="245.0" text="Dane Pacjenta">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="147.0" layoutY="71.0" prefHeight="0.0" prefWidth="359.0" />
+                        <VBox layoutX="137.0" layoutY="125.0" prefHeight="313.0" prefWidth="151.0" spacing="20.0">
+                           <children>
+                              <Label prefHeight="21.0" prefWidth="143.0" text="Imie:">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="21.0" prefWidth="152.0" text="Nazwisko:">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="120.0" text="Miejscownosc:">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="21.0" prefWidth="131.0" text="Numer domu:">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="120.0" text="Ulica:">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="120.0" text="Kod pocztowy:">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="17.0" prefWidth="120.0" text="Nr telefonu:">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Separator layoutX="298.0" layoutY="125.0" orientation="VERTICAL" prefHeight="300.0" prefWidth="6.0" />
+                        <VBox layoutX="327.0" layoutY="125.0" prefHeight="313.0" prefWidth="151.0" spacing="20.0">
+                           <children>
+                              <Label fx:id="imiePacjentaLabel" prefHeight="21.0" prefWidth="143.0" text="Nazwisko Pacjenta:">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="nazwiskoPacjentaLabel" prefHeight="21.0" prefWidth="152.0" text="Nazwisko Pacjenta:">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="miejscowoscLabel" prefHeight="17.0" prefWidth="120.0" text="Miejscownosc:">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="numerDomuLabel" prefHeight="21.0" prefWidth="131.0" text="Numer_domu:">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="ulicaLabel" prefHeight="17.0" prefWidth="120.0" text="Ulica:">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="kodPocztowyLabel" prefHeight="17.0" prefWidth="120.0" text="Kod pocztowy:">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="nrTelefonuLabel" prefHeight="17.0" prefWidth="120.0" text="Nr telefonu:">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+              </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="14" />
+               </graphic>
+            </Tab>
+            <Tab style="-fx-background-color: #2598f3;" text="Historia Wizyt">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="667.0" stylesheets="css/style.css">
+                     <children>
+                        <TableView fx:id="tabelaHistoriWizytPacjenta" layoutX="65.0" layoutY="86.0" prefHeight="463.0" prefWidth="602.0" stylesheets="@css/style.css">
+                           <columns>
+                              <TableColumn fx:id="kolumnaIdWizyty" prefWidth="40.0" text="Id" />
+                              <TableColumn fx:id="kolumnaImie" prefWidth="84.0" text="Imie " />
+                              <TableColumn fx:id="kolumnaNazwisko" prefWidth="87.0" text="Nazwisko " />
+                              <TableColumn fx:id="kolumnaSpecjalizacja" prefWidth="127.0" text="Specjalizacja" />
+                              <TableColumn fx:id="kolumnaDataWizyty" minWidth="0.0" prefWidth="120.0" text="Data wizyty" />
+                              <TableColumn fx:id="kolumnaGodzinaWizyty" prefWidth="142.0" text="Godzina wizyty" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="237.0" layoutY="27.0" prefHeight="31.0" prefWidth="245.0" text="Historia Wizyt Pacjenta">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="190.0" layoutY="67.0" prefHeight="0.0" prefWidth="359.0" />
+                     </children></AnchorPane>
+               </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" size="14" />
+               </graphic>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</Pane>

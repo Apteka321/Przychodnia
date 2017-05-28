@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="830.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PanelAdministracyjnyController">
+   <children>
+      <JFXDrawer fx:id="menu" prefHeight="730.0" prefWidth="220.0" style="-fx-background-color: #2598F3;">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="730.0" prefWidth="218.0">
+               <children>
+                  <ImageView fitHeight="178.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/adminLogo.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="10.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="dodajPracownika" onMouseClicked="#dodajPracownika" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Dodaj pracownika" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="1.0" top="1.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="modyfikujPracownika" onMouseClicked="#modyfikujPracownika" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Modyfikuj pracownika" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="specjalizacje" onMouseClicked="#specjalizacje" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Specjalizacje" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="planPracy" onMouseClicked="#planyPracy" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Plany pracy" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="wolne" onMouseClicked="#wolne" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Urlopy/zwolnienia" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="sale" onMouseClicked="#sale" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Sale" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="leki" onMouseClicked="#leki" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Leki" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="zabiegi" onMouseClicked="#zabiegi" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Zabiegi" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="zamowienia" onMouseClicked="#zamowienia" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Zamówienia" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="raporty" onMouseClicked="#raporty" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Raporty" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+         </children>
+      </JFXDrawer>
+      <Pane fx:id="wybranyModul" layoutX="220.0" prefHeight="730.0" prefWidth="607.0" />
+   </children>
+</Pane>

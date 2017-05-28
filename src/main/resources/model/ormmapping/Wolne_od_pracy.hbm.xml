@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: The State School of Higher Vocational Education in Jaroslaw
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Wolne_od_pracy" table="Wolne_od_pracy" lazy="false">
+		<id name="ID_wolnego" column="`ID wolnego`" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="plan_pracy" cascade="lock" column="`Plan pracyID`" class="model.Plan_pracy" not-null="true" lazy="proxy">
+		</many-to-one>
+		<property name="powod" column="Powod" type="string" length="100" not-null="true" lazy="false"/>
+		<property name="od_dnia" column="Od_dnia" type="date" not-null="true" lazy="false"/>
+		<property name="od_godziny" column="Od_godziny" type="time" not-null="true" lazy="false"/>
+		<property name="do_dnia" column="Do_dnia" type="date" not-null="true" lazy="false"/>
+		<property name="do_godziny" column="Do_godziny" type="time" not-null="true" lazy="false"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="295.0" prefWidth="239.0" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="5.0" prefHeight="50.0" prefWidth="220.0" text="Logowanie">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtUsername" focusColor="#2d9dd2" labelFloat="true" layoutX="25.0" layoutY="102.0" prefHeight="29.0" prefWidth="195.0" promptText="Nazwa uzytkownika">
+         <font>
+            <Font size="15.0" />
+         </font></JFXTextField>
+      <JFXPasswordField fx:id="txtPassword" focusColor="#2d9dd2" labelFloat="true" layoutX="25.0" layoutY="148.0" prefHeight="28.0" prefWidth="195.0" promptText="Hasło">
+         <font>
+            <Font size="14.0" />
+         </font></JFXPasswordField>
+      <Label fx:id="lblStatus" layoutX="25.0" layoutY="179.0" prefHeight="17.0" prefWidth="195.0" textFill="RED" />
+      <JFXCheckBox layoutX="25.0" layoutY="215.0" onAction="#pamietaj" text="Zapamietaj mnie" />
+      <JFXButton fx:id="buttonExample" layoutX="102.0" layoutY="243.0" onAction="#Login" ripplerFill="BLACK" style="-fx-background-color: #2d9dd2;" text="Zaloguj" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+   </children>
+</AnchorPane>

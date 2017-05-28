@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PanelPielegniarkiController">
+   <children>
+      <JFXDrawer fx:id="menu" prefHeight="700.0" prefWidth="220.0" style="-fx-background-color: #2598F3;">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="220.0">
+               <children>
+                  <ImageView fitHeight="178.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/pielegniarkaLogo.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="10.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="obslugaWizytyButton" onMouseClicked="#obsluzenieWizyty" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Obsłużenie wizyty" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="1.0" top="1.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="zaplanujWizytyButton" onMouseClicked="#zaplanujZabiegi" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Zaplanuj zabiegi" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="stworzZamowienieButton" onMouseClicked="#stworzenieZamowienia" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Stwórz zamówienie" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+                  <JFXButton fx:id="wyswietlPlanPracy" onMouseClicked="#wyswietlPlanPracy" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #6FBAF5;" text="Wyświetl plan pracy" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="1.0" top="1.0" />
+                     </padding>
+                  </JFXButton>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+         </children>
+      </JFXDrawer>
+      <Pane fx:id="wybranyModul" layoutX="220.0" prefHeight="700.0" prefWidth="700.0" />
+   </children>
+</Pane>
